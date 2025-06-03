@@ -2,214 +2,309 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Portfolio • Sawera Akhtar</title>
+
+  <!-- ************** CSS Amélioré ************** -->
   <style>
+    /* 1. Police et fond général */
     body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
       line-height: 1.6;
-      max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
     }
+
+    /* 2. En‐tête (header) avec fond sombre */
     header {
+      background-color: #2c3e50;
+      color: #fff;
+      padding: 40px 20px;
       text-align: center;
-      margin-bottom: 40px;
+      position: relative;
     }
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
+    header h1 {
+      margin: 0;
+      font-size: 2.8rem;
+      letter-spacing: 1px;
     }
-    h2 {
-      font-size: 1.8rem;
-      margin-top: 40px;
-      margin-bottom: 20px;
-      border-bottom: 2px solid #ccc;
-      padding-bottom: 10px;
+    header p {
+      margin-top: 10px;
+      font-size: 1.1rem;
+      opacity: 0.85;
     }
+
+    /* 3. Barre de navigation fixe (optionnel) */
+    nav {
+      background-color: #34495e;
+      color: #fff;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+    }
+    nav li {
+      margin: 0 15px;
+    }
+    nav a {
+      display: block;
+      padding: 12px 0;
+      color: #ecf0f1;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    nav a:hover {
+      color: #1abc9c;
+      border-bottom: 2px solid #1abc9c;
+    }
+
+    /* 4. Conteneur principal centré */
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+
+    /* 5. Styles des sections (cards) */
     section {
+      background-color: #fff;
       margin-bottom: 30px;
+      padding: 25px 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
+    section h2 {
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+      color: #2c3e50;
+      position: relative;
+      padding-bottom: 8px;
+    }
+    /* Ligne colorée sous chaque titre de section */
+    section h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background-color: #1abc9c;
+    }
+
+    /* 6. Articles (pour expériences/projets) */
     article {
       margin-bottom: 20px;
-      padding: 15px;
-      border: 1px solid #eee;
-      border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     }
     article h3 {
-      margin-top: 0;
+      margin: 0 0 8px 0;
       font-size: 1.4rem;
-      color: #333;
+      color: #34495e;
     }
-    img {
-      max-width: 100%;
-      height: auto;
-      display: block;
-      margin-top: 10px;
-      margin-bottom: 10px;
-      border-radius: 4px;
+    article p,
+    article ul {
+      margin: 6px 0;
     }
+    article ul {
+      list-style: disc;
+      padding-left: 20px;
+    }
+
+    /* 7. Liens et boutons */
     a {
-      color: #0366d6;
+      color: #1abc9c;
       text-decoration: none;
+      font-weight: 500;
     }
     a:hover {
       text-decoration: underline;
     }
+    .btn {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 8px 16px;
+      background-color: #1abc9c;
+      color: #fff;
+      border-radius: 4px;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      letter-spacing: 0.5px;
+    }
+    .btn:hover {
+      background-color: #16a085;
+    }
+
+    /* 8. Pied de page */
     footer {
       text-align: center;
-      margin-top: 50px;
+      padding: 20px 0;
       color: #666;
       font-size: 0.9rem;
     }
-    ul {
-      list-style-type: disc;
-      padding-left: 20px;
-    }
-    ul li {
-      margin-bottom: 8px;
+
+    /* 9. Responsive (petits écrans) */
+    @media(max-width: 600px) {
+      header h1 { font-size: 2rem; }
+      section h2 { font-size: 1.5rem; }
+      .btn { padding: 6px 12px; font-size: 0.85rem; }
+      nav ul { flex-wrap: wrap; }
+      nav li { margin: 5px 10px; }
     }
   </style>
+  <!-- ********** Fin du CSS ********** -->
 </head>
 <body>
 
+  <!-- Barre de navigation (optionnelle, supprimez si vous ne voulez pas) -->
+  <nav>
+    <ul>
+      <li><a href="#a-propos">À propos</a></li>
+      <li><a href="#formation">Formation</a></li>
+      <li><a href="#experiences">Expériences</a></li>
+      <li><a href="#projets">Projets</a></li>
+      <li><a href="#competences">Compétences</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- En‐tête -->
   <header>
     <h1>Sawera Akhtar</h1>
     <p>Étudiante en Informatique et Big Data – Recherche d’alternance 2025-2026</p>
   </header>
 
-  <!-- Section À propos / Profil -->
-  <section id="a-propos">
-    <h2>À propos</h2>
-    <p>
-      Bonjour ! Je suis <strong>Sawera Akhtar</strong>, admise en Master Informatique, spécialité Big Data, à l’Université Paris 8.  
-      Je recherche un contrat en alternance à partir de septembre 2025 afin de renforcer mes compétences en développement et en traitement de données, et de contribuer activement à des projets innovants dans le domaine de l’informatique.
-    </p>
-    <p><strong>Qualités :</strong> autonome, rigoureuse, ponctuelle, organisée.</p>
-    <p><strong>Engagements bénévoles :</strong>  
+  <!-- Conteneur principal -->
+  <div class="container">
+
+    <!-- 1. À propos / Profil -->
+    <section id="a-propos">
+      <h2>À propos</h2>
+      <p>Bonjour ! Je suis <strong>Sawera Akhtar</strong>, admise en Master Informatique, spécialité Big Data, à l’Université Paris 8.  
+      Je recherche un contrat en alternance à partir de septembre 2025 pour développer mes compétences en développement et en traitement de données, et contribuer à des projets innovants dans le domaine de l’informatique.</p>
+      <p><strong>Qualités :</strong> autonome, rigoureuse, ponctuelle, organisée.</p>
+      <p><strong>Engagements bénévoles :</strong></p>
       <ul>
         <li>Solidarité et insertion</li>
         <li>Protection de la nature</li>
         <li>Éducation pour tous</li>
       </ul>
-    </p>
-  </section>
+    </section>
 
-  <!-- Section Formation -->
-  <section id="formation">
-    <h2>Formation</h2>
-    <ul>
-      <li>
-        <strong>Septembre 2025 – Août 2027</strong> : Master Big Data – Université Paris 8, Seine-Saint-Denis
-      </li>
-      <li>
-        <strong>Depuis Septembre 2024</strong> : Licence Sciences Technologies Santé mention Informatique (parcours Informatique générale) – CNAM, Seine-Saint-Denis
-      </li>
-      <li>
-        <strong>Octobre 2023 – Mai 2024</strong> : Bachelor Engineering (3ᵉ année validée) – Supinfo, Paris
-      </li>
-      <li>
-        <strong>Septembre 2021 – Juillet 2023</strong> : BTS Systèmes Numériques option Informatique et Réseaux (SNIR) – Lycée Le Corbusier, Aubervilliers
-      </li>
-      <li>
-        <strong>Septembre 2018 – Juillet 2021</strong> : BAC STI2D (Système Informatique et Numérique) – Lycée Henri Bergson, Paris
-      </li>
-    </ul>
-  </section>
+    <!-- 2. Formation -->
+    <section id="formation">
+      <h2>Formation</h2>
+      <ul>
+        <li><strong>Septembre 2025 – Août 2027 :</strong> Master Big Data – Université Paris 8, Seine-Saint-Denis</li>
+        <li><strong>Depuis Septembre 2024 :</strong> Licence STS mention Informatique (parcours Informatique générale) – CNAM, Seine-Saint-Denis</li>
+        <li><strong>Octobre 2023 – Mai 2024 :</strong> Bachelor Engineering (3ᵉ année validée) – Supinfo, Paris</li>
+        <li><strong>Septembre 2021 – Juillet 2023 :</strong> BTS Systèmes Numériques option Informatique et Réseaux (SNIR) – Lycée Le Corbusier, Aubervilliers</li>
+        <li><strong>Septembre 2018 – Juillet 2021 :</strong> BAC STI2D (Système Informatique et Numérique) – Lycée Henri Bergson, Paris</li>
+      </ul>
+    </section>
 
-  <!-- Section Expériences professionnelles -->
-  <section id="experiences">
-    <h2>Expériences professionnelles</h2>
-    <article>
-      <h3>Février 2025 – Présent • Service informatique – K&amp;P Finance (Paris 6ᵉ)</h3>
-      <p><strong>Contexte :</strong> Refonte du CRM interne au sein du service informatique.</p>
-      <p><strong>Missions :</strong>
+    <!-- 3. Expériences professionnelles -->
+    <section id="experiences">
+      <h2>Expériences professionnelles</h2>
+
+      <article>
+        <h3>Février 2025 – Présent • Service informatique – K&amp;P Finance (Paris 6ᵉ)</h3>
+        <p><strong>Contexte :</strong> Refonte du CRM interne au sein du service informatique.</p>
+        <p><strong>Missions :</strong></p>
         <ul>
           <li>Développement back-end (Java / C#).</li>
-          <li>Amélioration de l’UX/UI à l’aide de jQuery et CSS.</li>
+          <li>Amélioration de l’UX/UI avec jQuery et CSS.</li>
           <li>Optimisation des performances et mise en place de statistiques d’usage.</li>
         </ul>
-      </p>
-      <p><strong>Résultats :</strong> Un CRM plus réactif, fiabilisé, et une interface utilisateur améliorée entraînant une augmentation de la productivité du service.</p>
-    </article>
+        <p><strong>Résultats :</strong> CRM plus réactif et fiabilisé, interface utilisateur améliorée, augmentation de la productivité du service.</p>
+      </article>
 
-    <article>
-      <h3>Mai 2022 – Juillet 2022 • Stage Support Informatique – Spie Batignolles (Nanterre)</h3>
-      <p><strong>Contexte :</strong> Service support technique interne pour l’ensemble des équipes de chantier et bureaux.</p>
-      <p><strong>Missions :</strong>
+      <article>
+        <h3>Mai 2022 – Juillet 2022 • Stage Support Informatique – Spie Batignolles (Nanterre)</h3>
+        <p><strong>Contexte :</strong> Service support technique interne pour les équipes de chantier et bureaux.</p>
+        <p><strong>Missions :</strong></p>
         <ul>
-          <li>Maintenance informatique (installation et mise à jour de logiciels).</li>
-          <li>Gestion des incidents et dépannage matériel.</li>
+          <li>Maintenance informatique (installation/mise à jour de logiciels).</li>
+          <li>Gestion d’incidents et dépannage matériel.</li>
           <li>Configuration de postes et administration système.</li>
         </ul>
+        <p><strong>Résultats :</strong> Réduction des temps d’arrêt, amélioration du suivi des incidents grâce à la mise en place d’un système de tickets simplifié.</p>
+      </article>
+
+    </section>
+
+    <!-- 4. Projets personnels -->
+    <section id="projets">
+      <h2>Projets personnels</h2>
+
+      <article>
+        <h3>Création d’un bras exosquelette à porter (Université Paris 8)</h3>
+        <p><strong>Contexte :</strong> Projet universitaire avec le département génie mécanique pour concevoir un prototype d’aide au portage d’objets lourds.</p>
+        <p><strong>Description :</strong> Conception et réalisation d’un exosquelette motorisé pour le bras, intégrant des capteurs de position.</p>
+        <p><strong>Technologies / Outils :</strong> Arduino, servomoteurs, capteurs de flexion, impression 3D.</p>
+        <p><strong>Résultats :</strong> Prototype fonctionnel capable de soulager jusqu’à 5 kg en statique, présenté lors de la soutenance semestrielle.</p>
+      </article>
+
+      <article>
+        <h3>Application Android de contrôle via Wi-Fi</h3>
+        <p><strong>Contexte :</strong> Développement d’une application pour piloter à distance le prototype d’exosquelette via Wi-Fi.</p>
+        <p><strong>Description :</strong> Création de l’interface graphique, communication asynchrone avec Arduino, gestion des commandes de mouvements.</p>
+        <p><strong>Technologies / Outils :</strong> Android Studio (Java), Volley, protocoles TCP/IP, Arduino UNO.</p>
+        <p><strong>Résultats :</strong> Contrôle en temps réel du prototype depuis un smartphone, validé lors d’une démonstration en laboratoire.</p>
+      </article>
+
+      <article>
+        <h3>Intégration capteurs, servos et Arduino</h3>
+        <p><strong>Contexte :</strong> Projet visant à améliorer la précision du mouvement de l’exosquelette.</p>
+        <p><strong>Description :</strong> Implémentation d’un système de capteurs (accéléromètre, gyroscope) pour mesurer l’orientation du bras et ajuster le mouvement des servomoteurs.</p>
+        <p><strong>Technologies / Outils :</strong> Arduino Mega, capteurs MPU-6050, servomoteurs, code en C/C++ embarqué.</p>
+        <p><strong>Résultats :</strong> Précision de mouvement augmentée de 30 %, meilleur confort de portage.</p>
+      </article>
+
+    </section>
+
+    <!-- 5. Compétences -->
+    <section id="competences">
+      <h2>Compétences</h2>
+      <ul>
+        <li><strong>Langues :</strong> Français (natal), Anglais (B2)</li>
+        <li><strong>Technologies :</strong> Java, C++, C#, JavaScript, PHP (WordPress), SQL (MySQL), NoSQL (MongoDB)</li>
+        <li><strong>Outils & Frameworks :</strong> Android Studio, Docker, Postman, Agile (Scrum), Visual Studio Code, Cisco</li>
+        <li><strong>Logiciels :</strong> Pack Office, Photoshop / Illustrator, Figma</li>
+        <li><strong>Autres :</strong> Administration système (maintenance, dépannage), gestion de projets, méthodologies Agile</li>
+      </ul>
+    </section>
+
+    <!-- 6. CV -->
+    <section id="cv">
+      <h2>Mon CV</h2>
+      <p>
+        <a href="cv/Sawera-Akhtar-CV.pdf" class="btn" target="_blank">Télécharger mon CV (PDF)</a>
       </p>
-      <p><strong>Résultats :</strong> Réduction des temps d’arrêt fournisseur et amélioration du suivi des incidents grâce à la mise en place d’un système de tickets interne simplifié.</p>
-    </article>
-  </section>
+      <p><em>Vérifiez que le fichier <code>cv/Sawera-Akhtar-CV.pdf</code> existe bien dans votre dépôt.</em></p>
+    </section>
 
-  <!-- Section Projets académiques / personnels -->
-  <section id="projets">
-    <h2>Projets personnels</h2>
-    
-    <article>
-      <h3>Création d’un bras exosquelette à porter (Université Paris 8)</h3>
-      <p><strong>Contexte :</strong> Projet universitaire en collaboration avec le département génie mécanique visant à concevoir un prototype d’aide au portage d’objets lourds.</p>
-      <p><strong>Description :</strong> Conception et réalisation d’un exosquelette motorisé pour le bras, intégrant des capteurs de position.</p>
-      <p><strong>Technologies / Outils :</strong> Arduino, servomoteurs, capteurs de flexion, impression 3D pour la structure.</p>
-      <p><strong>Résultats :</strong> Prototype fonctionnel capable de soulager jusqu’à 5 kg en statique, présenté lors de la soutenance de semestre.</p>
-    </article>
+    <!-- 7. Contact -->
+    <section id="contact">
+      <h2>Contact</h2>
+      <p><strong>Email :</strong> <a href="mailto:sawera18@outlook.fr">sawera18@outlook.fr</a></p>
+      <p><strong>Téléphone :</strong> 06 02 42 08 33</p>
+      <p><strong>LinkedIn :</strong> <a href="https://www.linkedin.com/in/sawera-akhtar-3451b8201" target="_blank">linkedin.com/in/sawera-akhtar-3451b8201</a></p>
+      <p><strong>Disponibilité :</strong> Télétravail ou présentiel | Permis B + véhicule personnel</p>
+    </section>
 
-    <article>
-      <h3>Application Android de contrôle via Wi-Fi</h3>
-      <p><strong>Contexte :</strong> Développement d’une application pour piloter à distance le prototype d’exosquelette via réseau Wi-Fi.</p>
-      <p><strong>Description :</strong> Création de l’interface graphique, communication asynchrone avec la carte Arduino, gestion des commandes de mouvements.</p>
-      <p><strong>Technologies / Outils :</strong> Android Studio (Java), bibliothèques de réseau (Volley), protocoles TCP/IP, Arduino UNO.</p>
-      <p><strong>Résultats :</strong> Contrôle en temps réel du prototype depuis un smartphone, validé lors d’une démonstration en laboratoire.</p>
-    </article>
+  </div> <!-- /container -->
 
-    <article>
-      <h3>Intégration capteurs, servos et Arduino</h3>
-      <p><strong>Contexte :</strong> Projet complémentaire visant à améliorer la précision et la réactivité de l’exosquelette.</p>
-      <p><strong>Description :</strong> Mise en place d’un système de capteurs (accéléromètre, gyroscope) pour mesurer l’orientation du bras et adapter le mouvement des servomoteurs.</p>
-      <p><strong>Technologies / Outils :</strong> Arduino Mega, capteurs MPU-6050, servomoteurs à couple élevé, code en C/C++ embarqué.</p>
-      <p><strong>Résultats :</strong> Précision de mouvement augmentée de 30 %, permettant un meilleur confort de portage.</p>
-    </article>
-
-  </section>
-
-  <!-- Section Compétences -->
-  <section id="competences">
-    <h2>Compétences</h2>
-    <ul>
-      <li><strong>Langues :</strong> Français (langue maternelle), Anglais (niveau intermédiaire – B2)</li>
-      <li><strong>Langages / Technologies :</strong> Java, C++, C#, JavaScript, PHP (WordPress), SQL (MySQL), NoSQL (MongoDB)</li>
-      <li><strong>Outils &amp; Frameworks :</strong> Android Studio, Docker, Postman, Agile (méthode Scrum), Visual Studio Code, Cisco</li>
-      <li><strong>Logiciels :</strong> Pack Office, Photoshop / Illustrator (création visuelle), Figma</li>
-      <li><strong>Autres :</strong> Administration système (maintenance, dépannage), gestion de projets Techniques et Méthodologies Agile</li>
-    </ul>
-  </section>
-
-  <!-- Section CV (lien vers le PDF) -->
-  <section id="cv">
-    <h2>Mon CV</h2>
-    <p>
-      <a href="cv/Sawera-Akhtar-CV.pdf" target="_blank">Télécharger mon CV au format PDF</a>
-    </p>
-    <p><em>(Pensez à uploader votre CV sous le chemin : <code>cv/Sawera-Akhtar-CV.pdf</code> dans votre dépôt.)</em></p>
-  </section>
-
-  <!-- Section Contact -->
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>Email : <a href="mailto:sawera18@outlook.fr">sawera18@outlook.fr</a></p>
-    <p>Téléphone : 06 02 42 08 33</p>
-    <p>LinkedIn : <a href="https://www.linkedin.com/in/sawera-akhtar-3451b8201" target="_blank">linkedin.com/in/sawera-akhtar-3451b8201</a></p>
-    <p><strong>Disponibilités :</strong> Télétravail ou présentiel</p>
-    <p><strong>Permis et véhicule :</strong> Permis B, véhicule personnel</p>
-  </section>
-
+  <!-- Pied de page -->
   <footer>
     <p>© 2025 Sawera Akhtar</p>
   </footer>
