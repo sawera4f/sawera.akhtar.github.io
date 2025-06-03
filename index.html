@@ -5,20 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Portfolio • Sawera Akhtar</title>
 
+  <!-- ===== CSS principal ===== -->
   <style>
-    /* ===== Variables de couleurs ===== */
+    /* — Variables de couleurs — */
     :root {
-      --clr-bg: #f0f2f5;
-      --clr-primary: #1abc9c;
-      --clr-dark: #2c3e50;
-      --clr-light: #ffffff;
-      --clr-text: #333333;
-      --clr-muted: #777777;
-      --clr-box: #ffffff;
-      --clr-box-shadow: rgba(0, 0, 0, 0.1);
+      --clr-bg: #f5f7fa;
+      --clr-primary: #4caf50;    /* couleur d’accent */
+      --clr-dark: #2c3e50;       /* texte sombre */
+      --clr-light: #ffffff;      /* blanc */
+      --clr-muted: #7f8c8d;      /* gris pour textes secondaires */
+      --clr-card-bg: #ffffff;    /* fond des cartes */
+      --clr-card-shadow: rgba(0, 0, 0, 0.1);
     }
 
-    /* ===== Reset / Base ===== */
+    /* — Reset global — */
     * {
       margin: 0;
       padding: 0;
@@ -27,8 +27,8 @@
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: var(--clr-bg);
-      color: var(--clr-text);
-      line-height: 1.5;
+      color: var(--clr-dark);
+      line-height: 1.6;
     }
     a {
       color: var(--clr-primary);
@@ -38,313 +38,599 @@
       text-decoration: underline;
     }
 
-    /* ===== Conteneur principal ===== */
-    .timeline-container {
-      position: relative;
-      max-width: 900px;
-      margin: 50px auto;
-      padding: 0 20px;
-    }
-    /* Ligne centrale verticale */
-    .timeline-container::before {
-      content: "";
-      position: absolute;
+    /* — Barre de navigation fixe — */
+    nav {
+      position: fixed;
       top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 4px;
-      height: 100%;
-      background-color: var(--clr-primary);
-    }
-
-    /* ===== Bloc de timeline ===== */
-    .timeline-item {
-      position: relative;
-      width: 50%;
-      padding: 20px 40px;
-    }
-    /* Positionné à gauche ou à droite */
-    .timeline-item.left {
       left: 0;
+      width: 100%;
+      background-color: var(--clr-light);
+      box-shadow: 0 2px 4px var(--clr-card-shadow);
+      z-index: 100;
     }
-    .timeline-item.right {
-      left: 50%;
-    }
-    /* Connexion au cercle (flèche) */
-    .timeline-item.left::before,
-    .timeline-item.right::before {
-      content: "";
-      position: absolute;
-      top: 30px; /* hauteur du cercle - ajustable */
-      width: 20px;
-      height: 20px;
-      background-color: var(--clr-box);
-      border: 4px solid var(--clr-primary);
-      border-radius: 50%;
-      z-index: 2;
-    }
-    .timeline-item.left::before {
-      right: -44px; /* place le cercle légèrement à l’extérieur de la ligne */
-    }
-    .timeline-item.right::before {
-      left: -44px;
-    }
-
-    /* Contenu de chaque bloc */
-    .timeline-item .content {
-      background-color: var(--clr-box);
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px var(--clr-box-shadow);
-    }
-    /* Flèche pointant vers la ligne */
-    .timeline-item.left .content::after,
-    .timeline-item.right .content::after {
-      content: "";
-      position: absolute;
-      top: 30px;
-      border: 10px solid transparent;
-    }
-    .timeline-item.left .content::after {
-      right: -20px;
-      border-left-color: var(--clr-box);
-    }
-    .timeline-item.right .content::after {
-      left: -20px;
-      border-right-color: var(--clr-box);
-    }
-
-    /* Titres de section dans un cercle */
-    .timeline-item .title-circle {
-      position: absolute;
-      top: 20px; /* ajuste la position verticale du cercle */
-      width: 60px;
-      height: 60px;
-      background-color: var(--clr-primary);
-      color: var(--clr-light);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-      font-size: 0.85rem;
-      text-align: center;
-      padding: 5px;
-    }
-    .timeline-item.left .title-circle {
-      right: -90px; /* centré par rapport au cercle de la ligne */
-    }
-    .timeline-item.right .title-circle {
-      left: -90px;
-    }
-
-    /* Titres & textes dans le bloc */
-    .timeline-item .content h3 {
-      margin-top: 0;
-      font-size: 1.4rem;
-      color: var(--clr-dark);
-      margin-bottom: 8px;
-    }
-    .timeline-item .content p {
-      margin: 8px 0;
-      font-size: 0.95rem;
-    }
-    .timeline-item .content ul {
-      margin: 8px 0 0 20px;
-      list-style: disc;
-      color: var(--clr-muted);
-    }
-    .timeline-item .content ul li {
-      margin-bottom: 6px;
-    }
-
-    /* ===== Section : Profil (en‐tête) ===== */
-    .profile-header {
-      text-align: center;
-      margin-bottom: 50px;
-      position: relative;
-    }
-    .profile-header .avatar-circle {
-      width: 120px;
-      height: 120px;
-      background-color: var(--clr-primary);
-      border-radius: 50%;
+    nav .container {
+      max-width: 1000px;
       margin: 0 auto;
       display: flex;
       align-items: center;
-      justify-content: center;
-      font-size: 2rem;
-      color: var(--clr-light);
-      font-weight: bold;
-      box-shadow: 0 2px 8px var(--clr-box-shadow);
+      justify-content: space-between;
+      padding: 10px 20px;
     }
-    .profile-header h1 {
-      margin: 15px 0 5px 0;
-      font-size: 2.5rem;
+    nav .logo {
+      font-size: 1.2rem;
+      font-weight: bold;
       color: var(--clr-dark);
     }
-    .profile-header p {
-      font-size: 1.1rem;
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+    nav ul li {
+      position: relative;
+    }
+    nav ul li a {
+      font-size: 0.95rem;
+      font-weight: 500;
+      padding: 8px 0;
+      display: inline-block;
+    }
+    nav ul li a.active,
+    nav ul li a:hover {
+      color: var(--clr-primary);
+      border-bottom: 2px solid var(--clr-primary);
+    }
+
+    /* — Hero (en‐tête) full‐width — */
+    .hero {
+      width: 100%;
+      height: 100vh;
+      background: linear-gradient(
+        rgba(44, 62, 80, 0.7),
+        rgba(44, 62, 80, 0.7)
+      ),
+      url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?fit=crop&w=1400&q=60')
+        no-repeat center center/cover;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: var(--clr-light);
+      padding: 0 20px;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      letter-spacing: 2px;
+      margin-bottom: 15px;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 25px;
+      max-width: 600px;
+    }
+    .hero .btn {
+      display: inline-block;
+      padding: 12px 30px;
+      background-color: var(--clr-primary);
+      color: var(--clr-light);
+      border-radius: 50px;
+      font-weight: 600;
+      transition: background-color 0.3s;
+    }
+    .hero .btn:hover {
+      background-color: #43a047;
+    }
+
+    /* — Conteneur centralisé (avec marge pour la nav fixe) — */
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 100px 20px 40px; /* 100px = hauteur approximative de la nav + un peu d’espace */
+    }
+
+    /* — Section : À propos — */
+    #a-propos {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      margin-bottom: 60px;
+    }
+    #a-propos .photo-profil {
+      flex: 1 1 200px;
+      max-width: 250px;
+    }
+    #a-propos .photo-profil img {
+      width: 100%;
+      border-radius: 50%;
+      box-shadow: 0 4px 10px var(--clr-card-shadow);
+    }
+    #a-propos .texte-profil {
+      flex: 2 1 300px;
+    }
+    #a-propos .texte-profil h2 {
+      font-size: 2rem;
+      margin-bottom: 15px;
+      color: var(--clr-dark);
+    }
+    #a-propos .texte-profil p {
+      margin-bottom: 12px;
+      color: var(--clr-muted);
+    }
+    #a-propos .texte-profil ul {
+      list-style: disc;
+      margin-left: 20px;
       color: var(--clr-muted);
     }
 
-    /* ===== Pied de page ===== */
-    footer {
+    /* — Section : Formation — */
+    #formation h2 {
+      font-size: 2rem;
+      margin-bottom: 30px;
       text-align: center;
-      margin: 50px 0 20px 0;
+      color: var(--clr-dark);
+    }
+    .cards-formation {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-bottom: 60px;
+    }
+    .carte-formation {
+      background-color: var(--clr-card-bg);
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px var(--clr-card-shadow);
+      position: relative;
+    }
+    .carte-formation h3 {
+      font-size: 1.2rem;
+      margin-bottom: 8px;
+      color: var(--clr-primary);
+    }
+    .carte-formation p {
+      font-size: 0.95rem;
+      margin-bottom: 6px;
+      color: var(--clr-dark);
+    }
+    .carte-formation .date {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background-color: var(--clr-primary);
+      color: var(--clr-light);
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 0.8rem;
+    }
+
+    /* — Section : Expériences — */
+    #experiences h2 {
+      font-size: 2rem;
+      margin-bottom: 30px;
+      text-align: center;
+      color: var(--clr-dark);
+    }
+    .cards-experience {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-bottom: 60px;
+    }
+    .carte-experience {
+      background-color: var(--clr-card-bg);
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px var(--clr-card-shadow);
+      position: relative;
+    }
+    .carte-experience h3 {
+      font-size: 1.2rem;
+      margin-bottom: 8px;
+      color: var(--clr-primary);
+    }
+    .carte-experience p {
+      font-size: 0.95rem;
+      margin-bottom: 8px;
+      color: var(--clr-dark);
+    }
+    .carte-experience ul {
+      list-style: disc;
+      margin-left: 20px;
+      margin-bottom: 8px;
+      color: var(--clr-muted);
+    }
+    .carte-experience .date {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background-color: var(--clr-primary);
+      color: var(--clr-light);
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 0.8rem;
+    }
+
+    /* — Section : Projets — */
+    #projets h2 {
+      font-size: 2rem;
+      margin-bottom: 30px;
+      text-align: center;
+      color: var(--clr-dark);
+    }
+    .cards-projet {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-bottom: 60px;
+    }
+    .carte-projet {
+      background-color: var(--clr-card-bg);
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px var(--clr-card-shadow);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .carte-projet h3 {
+      font-size: 1.2rem;
+      margin-bottom: 8px;
+      color: var(--clr-primary);
+    }
+    .carte-projet p {
+      font-size: 0.95rem;
+      margin-bottom: 12px;
+      color: var(--clr-dark);
+      flex: 1;
+    }
+    .carte-projet .btn-projet {
+      align-self: flex-start;
+      margin-top: auto;
+      padding: 8px 20px;
+      background-color: var(--clr-primary);
+      color: var(--clr-light);
+      border-radius: 4px;
+      font-size: 0.9rem;
+      transition: background-color 0.3s;
+    }
+    .carte-projet .btn-projet:hover {
+      background-color: #43a047;
+    }
+
+    /* — Section : Compétences — */
+    #competences h2 {
+      font-size: 2rem;
+      margin-bottom: 30px;
+      text-align: center;
+      color: var(--clr-dark);
+    }
+    .competence-item {
+      margin-bottom: 20px;
+    }
+    .competence-item .label {
+      font-size: 1rem;
+      margin-bottom: 6px;
+      color: var(--clr-dark);
+    }
+    .competence-item .barre-bg {
+      width: 100%;
+      height: 10px;
+      background-color: #ececec;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+    .competence-item .barre-remplie {
+      height: 100%;
+      background-color: var(--clr-primary);
+      border-radius: 5px;
+    }
+
+    /* — Section : Contact — */
+    #contact h2 {
+      font-size: 2rem;
+      margin-bottom: 30px;
+      text-align: center;
+      color: var(--clr-dark);
+    }
+    #contact .contact-info {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+    .contact-card {
+      background-color: var(--clr-card-bg);
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px var(--clr-card-shadow);
+      width: 280px;
+      text-align: center;
+    }
+    .contact-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+      color: var(--clr-primary);
+    }
+    .contact-card p {
+      font-size: 0.95rem;
+      color: var(--clr-dark);
+    }
+    #contact form {
+      max-width: 600px;
+      margin: 0 auto 60px;
+    }
+    #contact form input,
+    #contact form textarea {
+      width: 100%;
+      padding: 10px 12px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 0.95rem;
+      color: var(--clr-dark);
+    }
+    #contact form button {
+      display: inline-block;
+      padding: 10px 25px;
+      background-color: var(--clr-primary);
+      color: var(--clr-light);
+      border: none;
+      border-radius: 4px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    #contact form button:hover {
+      background-color: #43a047;
+    }
+
+    /* — Pied de page — */
+    footer {
+      background-color: var(--clr-light);
+      text-align: center;
+      padding: 20px 0;
       color: var(--clr-muted);
       font-size: 0.9rem;
     }
 
-    /* ===== Responsive ===== */
+    /* — Responsive / Media Queries — */
     @media (max-width: 768px) {
-      /* Timeline à 100% sans alternance */
-      .timeline-item,
-      .timeline-item.left,
-      .timeline-item.right {
-        width: 100%;
-        left: 0;
-        padding-left: 70px;
-        padding-right: 25px;
+      #a-propos {
+        flex-direction: column;
+        text-align: center;
       }
-      .timeline-item.left::before,
-      .timeline-item.right::before {
-        left: 20px;
+      #a-propos .texte-profil {
+        margin-top: 20px;
       }
-      .timeline-item.left .content::after,
-      .timeline-item.right .content::after {
-        left: 40px;
-        border-right-color: var(--clr-box);
-        border-left-color: transparent;
-        right: auto;
+      .cards-formation,
+      .cards-experience,
+      .cards-projet {
+        grid-template-columns: 1fr;
       }
-      .timeline-item .title-circle {
-        left: -90px;
-        right: auto;
+      nav .container {
+        flex-direction: column;
+      }
+      nav ul {
+        margin-top: 10px;
       }
     }
   </style>
+  <!-- ===== Fin CSS ===== -->
 </head>
 <body>
 
-  <!-- ===== En‐tête / Profil ===== -->
-  <div class="profile-header">
-    <!-- Si vous voulez un avatar, remplacez “SA” par une image <img> ou vos initiales -->
-    <div class="avatar-circle">SA</div>
+  <!-- ========== Barre de navigation ========= -->
+  <nav>
+    <div class="container">
+      <div class="logo">Sawera Akhtar</div>
+      <ul>
+        <li><a href="#a-propos" class="active">À propos</a></li>
+        <li><a href="#formation">Formation</a></li>
+        <li><a href="#experiences">Expériences</a></li>
+        <li><a href="#projets">Projets</a></li>
+        <li><a href="#competences">Compétences</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ========== Hero section ========= -->
+  <section class="hero">
     <h1>Sawera Akhtar</h1>
-    <p>Étudiante en Informatique &amp; Big Data – Recherche d’alternance 2025-2026</p>
-  </div>
+    <p>Étudiante en Informatique & Big Data – Recherche d’alternance 2025-2026</p>
+    <a href="cv/Sawera-Akhtar-CV.pdf" class="btn" target="_blank">Télécharger mon CV</a>
+  </section>
 
-  <!-- ===== Timeline principal ===== -->
-  <div class="timeline-container">
+  <!-- ========== Contenu principal ========= -->
+  <main class="container">
 
-    <!-- Formation (gauche) -->
-    <div class="timeline-item left">
-      <div class="title-circle">Formation</div>
-      <div class="content">
-        <h3>Master Big Data (2025-2027)</h3>
-        <p><strong>Université Paris 8, Seine-Saint-Denis</strong></p>
-        <p>Admission en Master Informatique, spécialité Big Data. Début : septembre 2025. Séminaires et travaux pratiques en traitement de données massives.</p>
-        <h3 style="margin-top: 15px;">Licence Informatique (depuis 2024)</h3>
-        <p><strong>CNAM (Paris I), Seine-Saint-Denis</strong></p>
-        <p>Étudiante en Licence Sciences Technologies Santé mention Informatique (parcours Informatique générale). Projets sur l’algorithmique et le développement web.</p>
-        <h3 style="margin-top: 15px;">BTS SNIR (2021-2023)</h3>
-        <p><strong>Lycée Le Corbusier, Aubervilliers</strong></p>
-        <p>Option Informatique et Réseaux (SNIR). Formation sur les systèmes embarqués, réseaux, programmation C et Java.</p>
-        <h3 style="margin-top: 15px;">BAC STI2D (2018-2021)</h3>
-        <p><strong>Lycée Henri Bergson, Paris</strong></p>
-        <p>Spécialité Système Informatique et Numérique (SIN). Réalisation de maquettes électroniques et projets IoT.</p>
+    <!-- ===== Section : À propos ===== -->
+    <section id="a-propos">
+      <div class="photo-profil">
+        <!-- Remplacez par votre photo ou laissez les initiales -->
+        <img src="https://avatars.githubusercontent.com/u/000?v=4" alt="Photo de profil Sawera Akhtar" />
       </div>
-    </div>
-
-    <!-- Expériences pro (droite) -->
-    <div class="timeline-item right">
-      <div class="title-circle">Expériences</div>
-      <div class="content">
-        <h3>Fév 2025 – Présent : K&amp;P Finance (Paris 6ᵉ)</h3>
-        <p><strong>Service informatique – Refonte du CRM interne</strong></p>
+      <div class="texte-profil">
+        <h2>À propos de moi</h2>
+        <p>Bonjour ! Je suis <strong>Sawera Akhtar</strong>, admise en Master Informatique, spécialité Big Data, à l’Université Paris 8.  
+        Je recherche un contrat en alternance à partir de septembre 2025 afin de développer mes compétences en développement et en traitement de données, et de contribuer à des projets innovants dans le domaine de l’informatique.</p>
+        <p><strong>Qualités :</strong> autonome, rigoureuse, ponctuelle, organisée.</p>
+        <p><strong>Engagements bénévoles :</strong></p>
         <ul>
-          <li>Back-end : Java, C#</li>
-          <li>UX/UI : jQuery, CSS</li>
-          <li>Optimisation des performances et tableau de bord de suivi d’usage</li>
-        </ul>
-        <p>Résultat : CRM modernisé, plus fluide et réactif, productivité +25 % pour l’équipe.</p>
-
-        <h3 style="margin-top: 15px;">Mai 2022 – Juil 2022 : Stage Support Informatique</h3>
-        <p><strong>Spie Batignolles (Nanterre)</strong></p>
-        <ul>
-          <li>Maintenance et mise à jour des postes</li>
-          <li>Gestion des incidents et dépannage matériel</li>
-          <li>Administration de parc et configuration serveurs</li>
-        </ul>
-        <p>Résultat : amélioration du suivi des tickets, réduction de 30 % du temps d’arrêt.</p>
-      </div>
-    </div>
-
-    <!-- Projets persos (gauche) -->
-    <div class="timeline-item left">
-      <div class="title-circle">Projets</div>
-      <div class="content">
-        <h3>Bras exosquelette Université Paris 8</h3>
-        <p><strong>Contexte :</strong> Collab. avec le département génie mécanique pour assister le port d’objets lourds.</p>
-        <ul>
-          <li>Conception d’un prototype motorisé</li>
-          <li>Capteurs de position et impression 3D pour la structure</li>
-          <li>Programmation Arduino (C/C++)</li>
-        </ul>
-        <p>Résultat : prototype capable de soulager jusqu’à 5 kg, présenté lors de la soutenance de semestre.</p>
-
-        <h3 style="margin-top: 15px;">Application Android de contrôle Wi-Fi</h3>
-        <p><strong>Contexte :</strong> Pilotage à distance du prototype d’exosquelette.</p>
-        <ul>
-          <li>Interface mobile sur Android Studio (Java)</li>
-          <li>Communication TCP/IP et bibliothèques Volley</li>
-          <li>Gestion des commandes de mouvements en temps réel</li>
-        </ul>
-        <p>Résultat : contrôle fluide depuis smartphone, validé en démonstration laboratoire.</p>
-
-        <h3 style="margin-top: 15px;">Intégration capteurs et servomoteurs</h3>
-        <p><strong>Contexte :</strong> Améliorer la précision du mouvement.</p>
-        <ul>
-          <li>Capteurs MPU-6050 (accéléromètre, gyroscope)</li>
-          <li>Carte Arduino Mega, servomoteurs à couple élevé</li>
-          <li>Algorithme de correction en C/C++ embarqué</li>
-        </ul>
-        <p>Résultat : précision augmentée de 30 %, confort de portage amélioré.</p>
-      </div>
-    </div>
-
-    <!-- Compétences (droite) -->
-    <div class="timeline-item right">
-      <div class="title-circle">Compétences</div>
-      <div class="content">
-        <ul>
-          <li><strong>Langages :</strong> Java, C++, C#, JavaScript, PHP, SQL, NoSQL (MongoDB)</li>
-          <li><strong>Outils & Frameworks :</strong> Android Studio, Docker, Postman, Git, VS Code, Cisco</li>
-          <li><strong>Logiciels :</strong> Photoshop, Illustrator, Figma, Pack Office</li>
-          <li><strong>Admin. Système :</strong> Maintenance, dépannage, réseaux, méthodologies Agile (Scrum)</li>
-          <li><strong>Langues :</strong> Français (natal), Anglais (B2)</li>
+          <li>Solidarité et insertion</li>
+          <li>Protection de la nature</li>
+          <li>Éducation pour tous</li>
         </ul>
       </div>
-    </div>
+    </section>
 
-    <!-- Contact (gauche) -->
-    <div class="timeline-item left">
-      <div class="title-circle">Contact</div>
-      <div class="content">
-        <p><strong>Email :</strong> <a href="mailto:sawera18@outlook.fr">sawera18@outlook.fr</a></p>
-        <p><strong>Téléphone :</strong> 06 02 42 08 33</p>
-        <p><strong>LinkedIn :</strong> <a href="https://www.linkedin.com/in/sawera-akhtar-3451b8201" target="_blank">linkedin.com/in/sawera-akhtar-3451b8201</a></p>
-        <p><strong>Disponibilité :</strong> Télétravail ou présentiel<br>
-           <strong>Permis B &amp; véhicule :</strong> Oui</p>
-        <p><a href="cv/Sawera-Akhtar-CV.pdf" class="btn" target="_blank">Télécharger mon CV (PDF)</a></p>
+    <!-- ===== Section : Formation ===== -->
+    <section id="formation">
+      <h2>Formation</h2>
+      <div class="cards-formation">
+        <div class="carte-formation">
+          <div class="date">2025-2027</div>
+          <h3>Master Big Data</h3>
+          <p><strong>Université Paris 8, Seine-Saint-Denis</strong></p>
+          <p>Admission en Master Informatique, spécialité Big Data. Séminaires et travaux pratiques en traitement de données massives.</p>
+        </div>
+        <div class="carte-formation">
+          <div class="date">2024-En cours</div>
+          <h3>Licence STS Informatique</h3>
+          <p><strong>CNAM (Paris I), Seine-Saint-Denis</strong></p>
+          <p>Licence Sciences Technologies Santé mention Informatique (parcours Informatique générale). Projets sur l’algorithmique et le développement web.</p>
+        </div>
+        <div class="carte-formation">
+          <div class="date">2021-2023</div>
+          <h3>BTS SNIR</h3>
+          <p><strong>Lycée Le Corbusier, Aubervilliers</strong></p>
+          <p>Option Informatique et Réseaux (SNIR). Systèmes embarqués, réseaux, programmation C et Java.</p>
+        </div>
+        <div class="carte-formation">
+          <div class="date">2018-2021</div>
+          <h3>BAC STI2D</h3>
+          <p><strong>Lycée Henri Bergson, Paris</strong></p>
+          <p>Spécialité Système Informatique et Numérique (SIN). Réalisation de maquettes électroniques et projets IoT.</p>
+        </div>
       </div>
-    </div>
+    </section>
 
-  </div> <!-- /.timeline-container -->
+    <!-- ===== Section : Expériences ===== -->
+    <section id="experiences">
+      <h2>Expériences professionnelles</h2>
+      <div class="cards-experience">
+        <div class="carte-experience">
+          <div class="date">Fév 2025-Présent</div>
+          <h3>K&P Finance (Paris 6ᵉ)</h3>
+          <p><strong>Service informatique – Refonte du CRM interne</strong></p>
+          <ul>
+            <li>Back-end : Java, C#</li>
+            <li>UX/UI : jQuery, CSS</li>
+            <li>Optimisation des performances et tableau de bord de suivi d’usage</li>
+          </ul>
+          <p>Résultat : CRM modernisé, plus fluide et réactif, productivité +25 % pour l’équipe.</p>
+        </div>
+        <div class="carte-experience">
+          <div class="date">Mai 2022-Juil 2022</div>
+          <h3>Spie Batignolles (Nanterre)</h3>
+          <p><strong>Stage Support Informatique</strong></p>
+          <ul>
+            <li>Maintenance et mise à jour des postes</li>
+            <li>Gestion des incidents et dépannage matériel</li>
+            <li>Administration de parc et configuration serveurs</li>
+          </ul>
+          <p>Résultat : amélioration du suivi des tickets, réduction de 30 % du temps d’arrêt.</p>
+        </div>
+      </div>
+    </section>
 
+    <!-- ===== Section : Projets ===== -->
+    <section id="projets">
+      <h2>Projets personnels</h2>
+      <div class="cards-projet">
+        <div class="carte-projet">
+          <h3>Bras exosquelette • Univ. Paris 8</h3>
+          <p><strong>Contexte :</strong> Collaboration avec le département génie mécanique pour concevoir un prototype d’aide au portage d’objets lourds.</p>
+          <p><strong>Outils :</strong> Arduino, servomoteurs, capteurs de flexion, impression 3D.</p>
+          <p><strong>Résultat :</strong> Prototype fonctionnel capable de soulager jusqu’à 5 kg.</p>
+          <a href="#" class="btn-projet">Voir la documentation</a>
+        </div>
+        <div class="carte-projet">
+          <h3>Application Android • Pilotage Wi-Fi</h3>
+          <p><strong>Contexte :</strong> Contrôle à distance du prototype d’exosquelette.</p>
+          <p><strong>Outils :</strong> Android Studio (Java), Volley (TCP/IP), Arduino UNO.</p>
+          <p><strong>Résultat :</strong> Commandes en temps réel depuis smartphone.</p>
+          <a href="#" class="btn-projet">Voir la documentation</a>
+        </div>
+        <div class="carte-projet">
+          <h3>Intégration capteurs • Précision</h3>
+          <p><strong>Contexte :</strong> Améliorer la précision du mouvement de l’exosquelette.</p>
+          <p><strong>Outils :</strong> Arduino Mega, MPU-6050 (accéléromètre/gyroscope), servomoteurs, C/C++.</p>
+          <p><strong>Résultat :</strong> Précision augmentée de 30 %, meilleur confort de portage.</p>
+          <a href="#" class="btn-projet">Voir la documentation</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Section : Compétences ===== -->
+    <section id="competences">
+      <h2>Compétences</h2>
+
+      <div class="competence-item">
+        <div class="label">Java, C++, C#, PHP</div>
+        <div class="barre-bg">
+          <div class="barre-remplie" style="width: 80%;"></div>
+        </div>
+      </div>
+
+      <div class="competence-item">
+        <div class="label">JavaScript (Node.js, React), HTML5, CSS3</div>
+        <div class="barre-bg">
+          <div class="barre-remplie" style="width: 75%;"></div>
+        </div>
+      </div>
+
+      <div class="competence-item">
+        <div class="label">SQL (MySQL), NoSQL (MongoDB)</div>
+        <div class="barre-bg">
+          <div class="barre-remplie" style="width: 70%;"></div>
+        </div>
+      </div>
+
+      <div class="competence-item">
+        <div class="label">Docker, Git, CI/CD</div>
+        <div class="barre-bg">
+          <div class="barre-remplie" style="width: 65%;"></div>
+        </div>
+      </div>
+
+      <div class="competence-item">
+        <div class="label">Photoshop, Illustrator, Figma</div>
+        <div class="barre-bg">
+          <div class="barre-remplie" style="width: 60%;"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Section : Contact ===== -->
+    <section id="contact">
+      <h2>Contact</h2>
+
+      <!-- Cartes contact (info) -->
+      <div class="contact-info">
+        <div class="contact-card">
+          <h3>Email</h3>
+          <p><a href="mailto:sawera18@outlook.fr">sawera18@outlook.fr</a></p>
+        </div>
+        <div class="contact-card">
+          <h3>Téléphone</h3>
+          <p>06 02 42 08 33</p>
+        </div>
+        <div class="contact-card">
+          <h3>LinkedIn</h3>
+          <p><a href="https://www.linkedin.com/in/sawera-akhtar-3451b8201" target="_blank">linkedin.com/in/sawera-akhtar-3451b8201</a></p>
+        </div>
+      </div>
+
+      <!-- Formulaire simple (facultatif) -->
+      <form action="#" method="post">
+        <input type="text" name="nom" placeholder="Votre nom" required />
+        <input type="email" name="email" placeholder="Votre email" required />
+        <textarea name="message" rows="5" placeholder="Votre message..." required></textarea>
+        <button type="submit">Envoyer</button>
+      </form>
+    </section>
+
+  </main>
+
+  <!-- ========== Pied de page ========== -->
   <footer>
-    <p>© 2025 Sawera Akhtar</p>
+    <p>© 2025 Sawera Akhtar – Tous droits réservés</p>
   </footer>
+
 </body>
 </html>
+
