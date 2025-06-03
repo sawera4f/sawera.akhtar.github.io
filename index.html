@@ -318,30 +318,178 @@
   <!-- ========== Contenu principal ========= -->
   <main class="container">
 
-    <!-- ===== Section : À propos ===== -->
-    <section id="a-propos">
-      <div class="photo-profil">
-        <!-- Photo de profil, avec espaces encodés en %20 -->
-        <img src="images/sawera%20akhtar%20photo.jpg" alt="Photo de profil de Sawera Akhtar" />
+<!-- =========================
+     SECTION “À PROPOS” STYLÉE
+========================= -->
+<section id="a-propos" style="background-color: #f9f9f9; padding: 60px 20px;">
+  <div class="apropos-container" style="max-width: 1000px; margin: auto; display: flex; flex-wrap: wrap; align-items: flex-start; gap: 40px;">
+    
+    <!-- Bloc image + calque -->
+    <div class="apropos-image-wrapper" style="position: relative; flex: 1 1 280px; min-width: 260px; height: 380px;">
+      <!-- Calque noir incliné derrière -->
+      <div style="
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        width: 260px;
+        height: 360px;
+        border: 2px solid #2c3e50;
+        transform: rotate(8deg);
+        border-radius: 12px;
+      "></div>
+      <!-- Carte blanche au-dessus -->
+      <div style="
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 260px;
+        height: 360px;
+        background-color: #fff;
+        border-radius: 12px;
+        box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+        overflow: hidden;
+      ">
+        <img
+          src="images/sawera%20akhtar%20photo.jpg"
+          alt="Photo de profil de Sawera Akhtar"
+          style="width: 100%; height: 100%; object-fit: cover;"
+        />
       </div>
-      <div class="texte-profil">
-        <h2><i class="fas fa-user-circle"></i> À propos de moi</h2>
-        <p>
-          Bonjour ! Je suis <strong>Sawera Akhtar</strong>, admise en Master Informatique,
-          spécialité Big Data, à l’Université Paris 8. Passionnée par la programmation et le
-          traitement de données massives, je recherche un contrat en alternance dès
-          septembre 2025 afin de renforcer mes compétences techniques et contribuer à des
-          projets à fort impact.
-        </p>
-        <p><strong>Qualités principales :</strong> autonomie, rigueur, ponctualité, organisation.</p>
-        <p><strong>Engagements bénévoles :</strong></p>
-        <ul>
-          <li>Solidarité et insertion</li>
-          <li>Protection de la nature</li>
-          <li>Éducation pour tous</li>
-        </ul>
+    </div>
+    
+    <!-- Bloc onglets + contenu -->
+    <div class="apropos-content" style="flex: 2 1 600px; min-width: 280px;">
+      <!-- Onglets -->
+      <div class="tabs" style="display: flex; gap: 12px; margin-bottom: 20px;">
+        <button class="tab-button active" data-tab="presentation" style="
+          padding: 8px 20px;
+          background-color: #3498db;
+          color: #fff;
+          border: none;
+          border-radius: 20px;
+          cursor: pointer;
+          transition: background-color 0.2s;
+        ">Présentation</button>
+        
+        <button class="tab-button" data-tab="langues" style="
+          padding: 8px 20px;
+          background-color: #fff;
+          color: #2c3e50;
+          border: 2px solid #ccc;
+          border-radius: 20px;
+          cursor: pointer;
+          transition: background-color 0.2s, border-color 0.2s;
+        ">Langues</button>
+        
+        <button class="tab-button" data-tab="softskills" style="
+          padding: 8px 20px;
+          background-color: #fff;
+          color: #2c3e50;
+          border: 2px solid #ccc;
+          border-radius: 20px;
+          cursor: pointer;
+          transition: background-color 0.2s, border-color 0.2s;
+        ">Soft skills</button>
+        
+        <button class="tab-button" data-tab="passions" style="
+          padding: 8px 20px;
+          background-color: #fff;
+          color: #2c3e50;
+          border: 2px solid #ccc;
+          border-radius: 20px;
+          cursor: pointer;
+          transition: background-color 0.2s, border-color 0.2s;
+        ">Passions</button>
       </div>
-    </section>
+      
+      <!-- Contenus des onglets -->
+      <div class="tab-contents" style="background-color: #fff; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); padding: 20px; line-height: 1.6; color: #333;">
+        <!-- Présentation (active par défaut) -->
+        <div class="tab-content" id="presentation" style="display: block;">
+          <p>
+            Actuellement en Licence Professionnelle Développeur Informatique Multisupport en alternance, je
+            suis un(e) étudiant(e) passionné(e) par le développement web et mobile. Mon objectif est de
+            me spécialiser dans la conception d’applications performantes et ergonomiques, guidé(e) par ma
+            curiosité et mon désir d’apprendre.
+          </p>
+          <p>
+            En tant que passionné(e), j’aime participer activement aux activités d’une entreprise et
+            développer des projets personnels pour enrichir mes compétences. Que ce soit en front‐end,
+            back‐end ou mobile, je recherche toujours à créer des solutions durables et centrées
+            utilisateur.
+          </p>
+          <p>
+            Si vous souhaitez en savoir plus ou me contacter, n’hésitez pas à parcourir ce site ou à
+            <a href="cv/Sawera-Akhtar-CV.pdf" style="color: #3498db; font-weight: 600;">télécharger mon CV</a> !
+          </p>
+        </div>
+        
+        <!-- Langues -->
+        <div class="tab-content" id="langues" style="display: none;">
+          <ul style="list-style: disc; margin-left: 20px; color: #555;">
+            <li><strong>Français</strong> : Langue maternelle.</li>
+            <li><strong>Anglais</strong> : Niveau intermédiaire, bonnes compétences à l’écrit et à l’oral.</li>
+            <li><strong>Espagnol</strong> : Niveau scolaire (B1), pratique courante lors de projets universitaires.</li>
+          </ul>
+        </div>
+        
+        <!-- Soft skills -->
+        <div class="tab-content" id="softskills" style="display: none;">
+          <ul style="list-style: disc; margin-left: 20px; color: #555;">
+            <li>Autonomie et prise d’initiative : capable de travailler en solo ou en équipe sans supervision constante.</li>
+            <li>Esprit d’équipe : j’apprécie la collaboration et la co‐construction de solutions.</li>
+            <li>Communication : adeptes des présentations et des échanges clairs avec les parties prenantes.</li>
+            <li>Gestion du temps : j’organise mes tâches pour respecter les délais et les objectifs.</li>
+          </ul>
+        </div>
+        
+        <!-- Passions -->
+        <div class="tab-content" id="passions" style="display: none;">
+          <ul style="list-style: disc; margin-left: 20px; color: #555;">
+            <li><strong>Musique</strong> : guitare et piano depuis l’enfance, concert amateur.</li>
+            <li><strong>Photo</strong> : photographie urbaine et portrait, retouches sur Lightroom.</li>
+            <li><strong>Voyages</strong> : découverte de nouvelles cultures (Europe, Asie du Sud‐Est).</li>
+            <li><strong>Jeux vidéo</strong> : intérêt pour la conception de gameplay et la narration interactive.</li>
+          </ul>
+        </div>
+      </div>
+      
+    </div> <!-- / apropos-content -->
+  </div> <!-- / apropos-container -->
+</section>
+
+<!-- ===== Petit script pour la logique des onglets ===== -->
+<script>
+  // Au chargement, on récupère tous les boutons et contenus
+  document.addEventListener('DOMContentLoaded', function() {
+    const tabButtons = document.querySelectorAll('.tab-button');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    tabButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Retirer la classe active sur tous les boutons, cacher tous les contenus
+        tabButtons.forEach(b => {
+          b.classList.remove('active');
+          b.style.backgroundColor = '#fff';
+          b.style.color = '#2c3e50';
+          b.style.border = '2px solid #ccc';
+        });
+        tabContents.forEach(c => c.style.display = 'none');
+
+        // Activer le bouton cliqué
+        btn.classList.add('active');
+        btn.style.backgroundColor = '#3498db';
+        btn.style.color = '#fff';
+        btn.style.border = 'none';
+
+        // Afficher le contenu correspondant
+        const target = btn.getAttribute('data-tab');
+        document.getElementById(target).style.display = 'block';
+      });
+    });
+  });
+</script>
+
 
     <!-- ===== Section : Formation ===== -->
     <section id="formation">
