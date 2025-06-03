@@ -152,26 +152,30 @@
       z-index: 1;
       color: var(--clr-light);
     }
-    .hero h1 .rotating-border::before {
-      content: '';
-      position: absolute;
-      top: -5px;
-      left: -5px;
-      width: calc(100% + 10px);
-      height: calc(100% + 10px);
-      border: 2px solid var(--clr-primary);
-      animation: rotate-rect 2s linear infinite;
-      transform-origin: center center;
-      z-index: -1;
-    }
-    @keyframes rotate-rect {
-      0% {
-        transform: rotate(0deg);
-      }
-      100% {
-        transform: rotate(360deg);
-      }
-    }
+    .hero h1 .rotating-border {
+  position: relative;
+  display: inline-block;
+  padding: 5px 10px; /* adapte si tu veux plus ou moins d’espace autour du texte */
+}
+
+.rotating-border::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 2px solid var(--clr-primary);
+  transform-origin: center center;
+  animation: rotate-rect 2s linear infinite;
+  z-index: -1;
+}
+
+/* si tu préfères inverser le sens (anti-horaire), remplace “360deg” par “-360deg” */
+@keyframes rotate-rect {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
     .hero p {
       font-size: 1.1rem;
       margin-top: 15px;
@@ -269,18 +273,30 @@
       z-index: 1;
       color: var(--clr-secondary);
     }
-    section h2 .rotating-border::before {
-      content: '';
-      position: absolute;
-      top: -5px;
-      left: -5px;
-      width: calc(100% + 10px);
-      height: calc(100% + 10px);
-      border: 2px solid var(--clr-primary);
-      animation: rotate-rect 2s linear infinite;
-      transform-origin: center center;
-      z-index: -1;
-    }
+    section h2 .rotating-border {
+  position: relative;
+  display: inline-block;
+  padding: 5px 10px; /* adapte si tu veux plus ou moins d’espace autour du texte */
+}
+
+.rotating-border::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 2px solid var(--clr-primary);
+  transform-origin: center center;
+  animation: rotate-rect 2s linear infinite;
+  z-index: -1;
+}
+
+/* si tu préfères inverser le sens (anti-horaire), remplace “360deg” par “-360deg” */
+@keyframes rotate-rect {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
     /* Petite barre sous le titre (statique, juste pour décorer) */
     section h2::after {
       content: '';
@@ -1439,7 +1455,7 @@
           </div>
           <div class="contact-card" data-anim-delay="0.4s">
             <h3><i class="fab fa-linkedin"></i>&nbsp;LinkedIn</h3>
-            <p><a href="https://www.linkedin.com/in/sawera-akhtarrr" target="_blank">linkedin.com/in/sawera-akhtarrr</a></p>
+            <p><a href="https://www.linkedin.com/in/sawera-akhtar" target="_blank">linkedin.com/in/sawera-akhtar</a></p>
           </div>
         </div>
       </div>
