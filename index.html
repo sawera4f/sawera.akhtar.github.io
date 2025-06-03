@@ -158,18 +158,6 @@
   padding: 5px 10px; /* adapte si tu veux plus ou moins d’espace autour du texte */
 }
 
-.rotating-border::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: 2px solid var(--clr-primary);
-  transform-origin: center center;
-  animation: rotate-rect 2s linear infinite;
-  z-index: -1;
-}
 
 /* si tu préfères inverser le sens (anti-horaire), remplace “360deg” par “-360deg” */
 @keyframes rotate-rect {
@@ -279,18 +267,7 @@
   padding: 5px 10px; /* adapte si tu veux plus ou moins d’espace autour du texte */
 }
 
-.rotating-border::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: 2px solid var(--clr-primary);
-  transform-origin: center center;
-  animation: rotate-rect 2s linear infinite;
-  z-index: -1;
-}
+
 
 /* si tu préfères inverser le sens (anti-horaire), remplace “360deg” par “-360deg” */
 @keyframes rotate-rect {
