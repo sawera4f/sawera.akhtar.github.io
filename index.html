@@ -27,7 +27,7 @@
       --clr-primary: #85144b;      /* Magenta foncé */
       --clr-secondary: #001f3f;    /* Navy bleu */
       --clr-light: #85144b;        /* Blanc */
-      --clr-muted: #85144b;       
+      --clr-muted: #dddddd;        /* Gris très clair */
       --clr-bg: #f5f7fa;           /* Fond général */
       --clr-card-shadow: rgba(0, 0, 0, 0.1);
     }
@@ -54,6 +54,16 @@
     ul {
       list-style: none;
     }
+
+    /* 1) Souligner tous les titres h2 et h3 */
+h2, h3 {
+  text-decoration: underline;
+}
+
+/* 2) Colorer les icônes LinkedIn et mail (hero) en #85144b */
+.hero .socials a i {
+  color: #85144b !important;
+}
 
     /* ========================
        HEADER
