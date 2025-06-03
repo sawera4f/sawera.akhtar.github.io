@@ -5,15 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Portfolio • Sawera Akhtar</title>
 
-  <!-- ===== Google Fonts ===== -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- =========================
+       Google Fonts
+  ========================= -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
     href="https://fonts.googleapis.com/css2?family=Lobster&family=Poppins:wght@300;400;500;700&display=swap"
     rel="stylesheet"
   />
 
-  <!-- ===== Font Awesome (icônes) ===== -->
+  <!-- =========================
+       Font Awesome (icônes)
+  ========================= -->
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -22,23 +26,26 @@
     referrerpolicy="no-referrer"
   />
 
-  <!-- ===== CSS principal ===== -->
+  <!-- =========================
+       CSS principal
+  ========================= -->
   <style>
     /* — Variables de couleurs — */
     :root {
       --clr-bg: #f5f7fa;
-      --clr-primary: #3498db;
-      --clr-dark: #2c3e50;
-      --clr-light: #ffffff;
-      --clr-muted: #7f8c8d;
-      --clr-badge-gradient: linear-gradient(135deg, #2980b9, #3498db);
-      --clr-skill-data: #FF8C00;       /* orange vif pour Data */
-      --clr-skill-dev: #1E90FF;        /* bleu pour Dev */
-      --clr-skill-db: #32CD32;         /* vert pour BDs */
-      --clr-skill-tools: #8A2BE2;      /* violet pour Outils */
+      --clr-primary: #1e90ff;      /* bleu principal */
+      --clr-secondary: #4682b4;    /* bleu plus foncé */
+      --clr-dark: #2c3e50;         /* gris-charbon */
+      --clr-light: #ffffff;        /* blanc */
+      --clr-muted: #6c7a89;        /* gris atténué */
+      --clr-card-shadow: rgba(0, 0, 0, 0.1);
+      --clr-skill-data: #2e8b57;   /* vert Data */
+      --clr-skill-dev: #1e90ff;    /* bleu Dev */
+      --clr-skill-db: #20b2aa;     /* turquoise BD */
+      --clr-skill-tools: #9370db;  /* violet Outils */
     }
 
-    /* — Reset minimal — */
+    /* — Reset global — */
     * {
       margin: 0;
       padding: 0;
@@ -69,7 +76,7 @@
       left: 0;
       width: 100%;
       height: 70px;
-      background-color: rgba(44, 62, 80, 0.9);
+      background-color: rgba(44, 62, 80, 0.95);
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -79,8 +86,8 @@
     }
     header .logo {
       font-family: 'Lobster', cursive;
-      font-size: 2rem;
-      color: #e74c3c;
+      font-size: 24px;
+      color: var(--clr-primary);
     }
     header nav ul {
       display: flex;
@@ -90,7 +97,7 @@
       font-size: 0.95rem;
       font-weight: 500;
       color: #fff;
-      padding: 8px 12px;
+      padding: 6px 10px;
       border-radius: 4px;
       transition: background-color 0.3s;
     }
@@ -103,16 +110,18 @@
       padding-top: 90px;
     }
 
-    /* — PAGE DE GARDE (HERO) — */
+    /* =========================
+         PAGE DE GARDE (HERO)
+       ========================= */
     .hero {
       width: 100%;
       height: 100vh;
-      background: linear-gradient(
-        rgba(44, 62, 80, 0.7),
-        rgba(44, 62, 80, 0.7)
-      ),
-      url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?fit=crop&w=1400&q=60')
-        no-repeat center center/cover;
+      background:
+        linear-gradient(
+          rgba(44, 62, 80, 0.7),
+          rgba(44, 62, 80, 0.7)
+        ),
+        url('images/hero-bg.jpg') no-repeat center center/cover;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -122,14 +131,14 @@
       position: relative;
       overflow: hidden;
     }
-    /* Typing effect pour le nom */
+    /* Typing effect sur le nom */
     .hero h1 {
       font-family: 'Lobster', cursive;
-      font-size: 5rem;
+      font-size: 4rem;
       white-space: nowrap;
       overflow: hidden;
-      border-right: 0.15em solid #e74c3c;
-      width: 0; /* commence à 0 */
+      border-right: 0.15em solid var(--clr-primary);
+      width: 0;
       box-sizing: border-box;
       animation:
         typing 3s steps(30, end) forwards,
@@ -142,39 +151,39 @@
     }
     @keyframes blink-caret {
       from, to { border-color: transparent; }
-      50% { border-color: #e74c3c; }
+      50% { border-color: var(--clr-primary); }
     }
-    /* Sous-titre fade-in après le typing */
+    /* Sous-titre fade-in */
     .hero p {
-      font-size: 1.4rem;
+      font-size: 1.2rem;
       margin-bottom: 30px;
       max-width: 700px;
       color: #e0e0e0;
       font-weight: 300;
       opacity: 0;
-      animation: fadeIn 2s 3s forwards; /* 3s = délai après le typing */
+      animation: fadeIn 2s 3s forwards;
     }
     @keyframes fadeIn {
       to { opacity: 1; }
     }
+    /* Bouton fade-in */
     .hero .btn {
       display: inline-block;
-      padding: 14px 36px;
+      padding: 12px 30px;
       background-color: var(--clr-primary);
       color: var(--clr-light);
       border-radius: 50px;
-      font-weight: 500;
+      font-weight: 600;
       font-size: 1rem;
       transition: background-color 0.3s, transform 0.3s;
       opacity: 0;
-      animation: fadeIn 2s 4s forwards; /* bouton apparaît + tard */
+      animation: fadeIn 2s 4s forwards;
     }
     .hero .btn:hover {
-      background-color: #2980b9;
-      transform: translateY(-3px);
+      background-color: var(--clr-secondary);
+      transform: translateY(-2px);
     }
-
-    /* Icônes sociales (LinkedIn, Twitter) */
+    /* Icônes sociales fade-in */
     .hero .socials {
       position: absolute;
       bottom: 80px;
@@ -197,8 +206,7 @@
     .hero .socials a:hover {
       background-color: rgba(255,255,255,0.4);
     }
-
-    /* Scroll indicator en bas */
+    /* Scroll indicator (bounce) */
     .hero .scroll-down {
       position: absolute;
       bottom: 20px;
@@ -212,7 +220,9 @@
       60% { transform: translateY(-5px); }
     }
 
-    /* — TITRES DE SECTION — */
+    /* =========================
+         TITRES DE SECTION
+       ========================= */
     section {
       width: 100%;
       padding: 60px 20px;
@@ -225,6 +235,20 @@
       font-weight: 600;
       position: relative;
       font-family: 'Poppins', sans-serif;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeSlideIn 0.8s forwards;
+    }
+    /* Delay légèrement différent pour chaque section via attribut data-anim-delay */
+    section h2[data-anim-delay="0.2s"] { animation-delay: 0.2s; }
+    section h2[data-anim-delay="0.4s"] { animation-delay: 0.4s; }
+    section h2[data-anim-delay="0.6s"] { animation-delay: 0.6s; }
+    section h2[data-anim-delay="0.8s"] { animation-delay: 0.8s; }
+    @keyframes fadeSlideIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
     section h2::after {
       content: '';
@@ -240,7 +264,9 @@
       margin: auto;
     }
 
-    /* — SECTION COMPÉTENCES — */
+    /* =========================
+         SECTION COMPÉTENCES
+       ========================= */
     #competences {
       background-color: #fff;
     }
@@ -250,25 +276,30 @@
       gap: 30px;
       margin-top: 20px;
       align-items: flex-start;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeSlideIn 0.8s 1s forwards;
     }
 
-    /* COLONNE GAUCHE : BARRES CIRCULAIRES ANIMÉES */
+    /* ---- COLONNE GAUCHE : CIRCLÉS ANIMÉS ---- */
     .skills-left {
       flex: 1 1 300px;
       min-width: 280px;
-      font-family: 'Poppins', sans-serif;
     }
     .skills-left .pretitle {
       font-size: 0.9rem;
-      color: #e74c3c;
+      color: var(--clr-secondary);
       font-weight: 400;
       margin-bottom: 8px;
     }
-    .skills-left h2 {
-      font-size: 2.2rem;
+    .skills-left h3 {
+      font-size: 1.8rem;
       color: var(--clr-dark);
       margin-bottom: 16px;
       font-weight: 600;
+      border-bottom: 2px solid var(--clr-primary);
+      display: inline-block;
+      padding-bottom: 4px;
     }
     .skills-left p {
       font-size: 1rem;
@@ -276,7 +307,6 @@
       margin-bottom: 24px;
       font-weight: 300;
     }
-
     .circle-container {
       display: grid;
       grid-template-columns: repeat(2, minmax(120px, 1fr));
@@ -302,9 +332,10 @@
       stroke: #ecf0f1;
     }
     .progress-circle .progress {
-      stroke-dasharray: 345; /* environ 2π×55 */
+      stroke-dasharray: 345; /* 2π×55 ≈ 345 */
       stroke-dashoffset: 345;
-      animation: progressAnim 2s ease-out forwards;
+      animation: progressAnim 1.8s ease-out forwards;
+      stroke: var(--clr);
     }
     .progress-circle .label {
       position: absolute;
@@ -317,7 +348,7 @@
     }
     .progress-circle .text {
       position: absolute;
-      bottom: 12px;
+      bottom: 10px;
       width: 100%;
       text-align: center;
       font-size: 0.9rem;
@@ -333,7 +364,7 @@
       }
     }
 
-    /* COLONNE CENTRALE : ICÔNES MÉTIERS */
+    /* ---- COLONNE CENTRALE : ICÔNES ---- */
     .icons-center {
       flex: 0 0 60px;
       display: flex;
@@ -345,10 +376,10 @@
     }
     .icons-center i {
       font-size: 1.5rem;
-      color: #7f8c8d;
+      color: var(--clr-muted);
     }
 
-    /* COLONNE LABELS : textes à côté des icônes */
+    /* ---- COLONNE GAUCHE 2 : LABELS ---- */
     .labels-center {
       flex: 0 0 160px;
       display: flex;
@@ -363,7 +394,7 @@
       color: var(--clr-dark);
     }
 
-    /* COLONNE DROITE : NUAGE DE MOTS */
+    /* ---- COLONNE DROITE : NUAGE DE MOTS ---- */
     .wordcloud-right {
       flex: 1 1 250px;
       min-width: 200px;
@@ -377,7 +408,7 @@
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
 
-    /* Responsive “Compétences” */
+    /* Responsive compétences */
     @media (max-width: 768px) {
       .skills-wrapper {
         flex-direction: column;
@@ -394,9 +425,16 @@
       }
     }
 
-    /* — SECTION “À PROPOS” — */
+    /* =========================
+         SECTION “À PROPOS”
+       ========================= */
     #a-propos {
-      background-color: #f9f9f9;
+      background-color: #fff;
+    }
+    #a-propos .section-content {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeSlideIn 0.8s 0.6s forwards;
     }
     #a-propos .apropos-wrapper {
       display: flex;
@@ -405,20 +443,20 @@
       gap: 40px;
       margin-top: 20px;
     }
-    /* Partie photo + calque */
+    /* Photo + effet calque */
     .apropos-image {
       position: relative;
       flex: 1 1 300px;
       min-width: 280px;
-      height: 400px;
+      height: 380px;
     }
     .apropos-image .layer-back {
       position: absolute;
       top: 20px;
       left: 20px;
-      width: 280px;
-      height: 380px;
-      border: 2px solid #2c3e50;
+      width: 260px;
+      height: 360px;
+      border: 2px solid var(--clr-secondary);
       transform: rotate(8deg);
       border-radius: 12px;
     }
@@ -426,9 +464,9 @@
       position: absolute;
       top: 0;
       left: 0;
-      width: 280px;
-      height: 380px;
-      background-color: #fff;
+      width: 260px;
+      height: 360px;
+      background-color: var(--clr-light);
       border-radius: 12px;
       box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
       overflow: hidden;
@@ -438,26 +476,27 @@
       height: 100%;
       object-fit: cover;
     }
-    /* Partie texte + onglets */
+    /* Texte + onglets */
     .apropos-text {
       flex: 2 1 600px;
       min-width: 300px;
     }
-    .apropos-text .intro {
-      text-align: center;
-      margin-bottom: 30px;
-    }
     .apropos-text .intro h1 {
-      font-size: 3rem;
+      font-size: 2.8rem;
       color: var(--clr-dark);
-      margin-bottom: 8px;
+      margin-bottom: 10px;
       font-weight: 700;
       font-family: 'Poppins', sans-serif;
+      opacity: 0;
+      animation: fadeSlideIn 0.8s 0.8s forwards;
     }
     .apropos-text .intro p {
-      font-size: 1.1rem;
+      font-size: 1rem;
       color: var(--clr-muted);
+      margin-bottom: 20px;
       font-weight: 300;
+      opacity: 0;
+      animation: fadeSlideIn 0.8s 1s forwards;
     }
     /* Onglets */
     .tabs {
@@ -466,13 +505,15 @@
       flex-wrap: wrap;
       justify-content: center;
       margin-bottom: 20px;
+      opacity: 0;
+      animation: fadeSlideIn 0.8s 1.2s forwards;
     }
     .tabs .tab-button {
-      padding: 10px 24px;
-      background-color: #fff;
+      padding: 8px 20px;
+      background-color: var(--clr-light);
       color: var(--clr-dark);
-      border: 2px solid #ccc;
-      border-radius: 25px;
+      border: 2px solid var(--clr-muted);
+      border-radius: 20px;
       cursor: pointer;
       font-size: 0.95rem;
       transition: background-color 0.2s, border-color 0.2s, color 0.2s;
@@ -480,22 +521,24 @@
     }
     .tabs .tab-button.active {
       background-color: var(--clr-primary);
-      color: #fff;
+      color: var(--clr-light);
       border-color: var(--clr-primary);
     }
     .tab-contents {
-      background-color: #fff;
+      background-color: var(--clr-light);
       border-radius: 8px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.05);
       padding: 24px;
       line-height: 1.7;
-      color: #333;
+      color: var(--clr-dark);
       font-weight: 300;
+      opacity: 0;
+      animation: fadeSlideIn 0.8s 1.4s forwards;
     }
     .tab-contents ul {
       list-style: disc;
       margin-left: 20px;
-      color: #555;
+      color: var(--clr-muted);
     }
     /* Responsive “À propos” */
     @media (max-width: 768px) {
@@ -508,28 +551,121 @@
       }
     }
 
-    /* — SECTION “FORMATION” — */
+    /* =========================
+         SECTION “FORMATION”
+       ========================= */
     #formation {
       background-color: var(--clr-bg);
     }
-    #formation h2 {
-      font-size: 2.4rem;
-      margin-bottom: 30px;
-      text-align: center;
-      color: var(--clr-dark);
-      font-weight: 600;
-      font-family: 'Poppins', sans-serif;
+    #formation .section-content {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeSlideIn 0.8s 1s forwards;
     }
-    .cards-formation {
+    /* Timeline vertical */
+    .timeline {
+      position: relative;
+      margin: 40px 0;
+      padding-left: 30px;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 15px;
+      width: 4px;
+      height: 100%;
+      background-color: var(--clr-primary);
+      border-radius: 2px;
+    }
+    .timeline-entry {
+      position: relative;
+      margin-bottom: 40px;
+    }
+    .timeline-entry .dot {
+      position: absolute;
+      left: 7px;
+      top: 0;
+      width: 16px;
+      height: 16px;
+      background-color: var(--clr-light);
+      border: 4px solid var(--clr-primary);
+      border-radius: 50%;
+    }
+    .timeline-entry .content {
+      margin-left: 40px;
+      background-color: var(--clr-light);
+      padding: 16px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px var(--clr-card-shadow);
+      transition: transform 0.3s;
+      font-family: 'Poppins', sans-serif;
+      opacity: 0;
+      transform: translateX(-20px);
+      animation: fadeSlideIn 0.8s forwards;
+    }
+    /* Delays distincts pour chaque entrée (attribut data-anim-delay) */
+    .timeline-entry[data-anim-delay="0.2s"] .content { animation-delay: 0.2s; }
+    .timeline-entry[data-anim-delay="0.4s"] .content { animation-delay: 0.4s; }
+    .timeline-entry[data-anim-delay="0.6s"] .content { animation-delay: 0.6s; }
+    .timeline-entry[data-anim-delay="0.8s"] .content { animation-delay: 0.8s; }
+    .timeline-entry:hover .content {
+      transform: translateX(0);
+    }
+    .timeline-entry .content h3 {
+      font-size: 1.2rem;
+      color: var(--clr-primary);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 500;
+    }
+    .timeline-entry .content h3 i {
+      font-size: 1.1rem;
+      color: var(--clr-primary);
+    }
+    .timeline-entry .content p {
+      font-size: 0.95rem;
+      margin-bottom: 6px;
+      color: var(--clr-dark);
+    }
+    .timeline-entry .content img {
+      width: 50px;
+      height: 50px;
+      object-fit: contain;
+      position: absolute;
+      top: 16px;
+      right: 16px;
+    }
+    .timeline-entry .content .date {
+      font-size: 0.8rem;
+      color: var(--clr-muted);
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+
+    /* =========================
+         SECTION “EXPÉRIENCES”
+       ========================= */
+    #experiences {
+      background-color: #fff;
+    }
+    #experiences .section-content {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeSlideIn 0.8s 1s forwards;
+    }
+    .exp-cards {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 20px;
-      margin-bottom: 60px;
+      margin-top: 20px;
       max-width: 1200px;
       margin-left: auto;
       margin-right: auto;
     }
-    .carte-formation {
+    .exp-card {
       background-color: var(--clr-light);
       padding: 20px;
       border-radius: 8px;
@@ -538,144 +674,84 @@
       overflow: hidden;
       transition: transform 0.2s;
       font-family: 'Poppins', sans-serif;
-      font-weight: 300;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeSlideIn 0.8s forwards;
     }
-    .carte-formation:hover {
+    .exp-card[data-anim-delay="0.2s"] { animation-delay: 0.2s; }
+    .exp-card[data-anim-delay="0.4s"] { animation-delay: 0.4s; }
+    .exp-card[data-anim-delay="0.6s"] { animation-delay: 0.6s; }
+    .exp-card:hover {
       transform: translateY(-4px);
     }
-    .carte-formation .logo-formation {
-      width: 60px;
-      height: 60px;
+    .exp-card .logo-company {
+      width: 50px;
+      height: 50px;
       object-fit: contain;
       position: absolute;
       top: 20px;
-      left: 20px;
+      right: 20px;
     }
-    .carte-formation h3 {
+    .exp-card h3 {
       font-size: 1.2rem;
-      margin-bottom: 8px;
-      color: var(--clr-primary);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: 60px; /* pour ne pas chevaucher le logo */
-      font-weight: 500;
-    }
-    .carte-formation h3 i {
-      font-size: 1.1rem;
-      color: var(--clr-primary);
-    }
-    .carte-formation p {
-      font-size: 0.95rem;
       margin-bottom: 6px;
-      color: var(--clr-dark);
-      margin-top: 6px;
-    }
-    .carte-formation .date {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      background: var(--clr-badge-gradient);
-      color: var(--clr-light);
-      padding: 6px 10px;
-      border-radius: 4px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      box-shadow: 0 2px 4px var(--clr-card-shadow);
-      font-family: 'Poppins', sans-serif;
-    }
-
-    /* — SECTION “EXPÉRIENCES” — */
-    #experiences {
-      background-color: #f9f9f9;
-    }
-    #experiences h2 {
-      font-size: 2.4rem;
-      margin-bottom: 30px;
-      text-align: center;
-      color: var(--clr-dark);
-      font-weight: 600;
-      font-family: 'Poppins', sans-serif;
-    }
-    .cards-experience {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px;
-      margin-bottom: 60px;
-      max-width: 1200px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .carte-experience {
-      background-color: var(--clr-light);
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px var(--clr-card-shadow);
-      position: relative;
-      overflow: hidden;
-      transition: transform 0.2s;
-      font-family: 'Poppins', sans-serif;
-      font-weight: 300;
-    }
-    .carte-experience:hover {
-      transform: translateY(-4px);
-    }
-    .carte-experience .date {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      background: var(--clr-badge-gradient);
-      color: var(--clr-light);
-      padding: 6px 10px;
-      border-radius: 4px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      box-shadow: 0 2px 4px var(--clr-card-shadow);
-      font-family: 'Poppins', sans-serif;
-    }
-    .carte-experience h3 {
-      font-size: 1.2rem;
-      margin-bottom: 8px;
       color: var(--clr-primary);
       display: flex;
       align-items: center;
       gap: 8px;
       font-weight: 500;
+      margin-top: 60px; /* pour laisser place au logo */
     }
-    .carte-experience h3 i {
+    .exp-card h3 i {
       font-size: 1.1rem;
       color: var(--clr-primary);
     }
-    .carte-experience p {
+    .exp-card .date {
+      font-size: 0.8rem;
+      color: var(--clr-muted);
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+    .exp-card p {
       font-size: 0.95rem;
       margin-bottom: 6px;
       color: var(--clr-dark);
     }
-    .carte-experience ul {
+    .exp-card ul {
       list-style: disc;
       margin-left: 20px;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
       color: var(--clr-muted);
       font-size: 0.95rem;
     }
+    .exp-card .doc-link {
+      display: inline-block;
+      margin-top: 12px;
+      color: var(--clr-primary);
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: color 0.3s;
+    }
+    .exp-card .doc-link:hover {
+      color: var(--clr-secondary);
+    }
 
-    /* — SECTION “PROJETS” — */
+    /* =========================
+         SECTION “PROJETS”
+       ========================= */
     #projets {
       background-color: var(--clr-bg);
     }
-    #projets h2 {
-      font-size: 2.4rem;
-      margin-bottom: 30px;
-      text-align: center;
-      color: var(--clr-dark);
-      font-weight: 600;
-      font-family: 'Poppins', sans-serif;
+    #projets .section-content {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeSlideIn 0.8s 1s forwards;
     }
     .cards-projet {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 20px;
-      margin-bottom: 60px;
+      margin-top: 20px;
       max-width: 1200px;
       margin-left: auto;
       margin-right: auto;
@@ -691,8 +767,13 @@
       overflow: hidden;
       transition: transform 0.2s;
       font-family: 'Poppins', sans-serif;
-      font-weight: 300;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeSlideIn 0.8s forwards;
     }
+    .carte-projet[data-anim-delay="0.2s"] { animation-delay: 0.2s; }
+    .carte-projet[data-anim-delay="0.4s"] { animation-delay: 0.4s; }
+    .carte-projet[data-anim-delay="0.6s"] { animation-delay: 0.6s; }
     .carte-projet:hover {
       transform: translateY(-4px);
     }
@@ -729,42 +810,44 @@
       font-family: 'Poppins', sans-serif;
     }
     .carte-projet .btn-projet:hover {
-      background-color: #2980b9;
+      background-color: var(--clr-secondary);
       transform: translateY(-2px);
     }
 
-    /* — SECTION “CONTACT” — */
+    /* =========================
+         SECTION “CONTACT”
+       ========================= */
     #contact {
-      background-color: #fff;
+      background-color: var(--clr-light);
     }
-    #contact h2 {
-      font-size: 2.4rem;
-      margin-bottom: 30px;
-      text-align: center;
-      color: var(--clr-dark);
-      font-family: 'Poppins', sans-serif;
-      font-weight: 600;
+    #contact .section-content {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeSlideIn 0.8s 1s forwards;
     }
     .contact-wrapper {
-      max-width: 800px;
-      margin: auto;
+      max-width: 400px;
+      margin: 40px auto 0;
       display: flex;
-      flex-wrap: wrap;
-      gap: 30px;
+      gap: 20px;
       justify-content: center;
-      align-items: flex-start;
     }
     .contact-card {
-      background-color: var(--clr-light);
+      background-color: var(--clr-bg);
       padding: 20px;
       border-radius: 8px;
       box-shadow: 0 2px 8px var(--clr-card-shadow);
-      width: 260px;
       text-align: center;
       font-family: 'Poppins', sans-serif;
       font-weight: 300;
       transition: transform 0.2s;
+      flex: 1;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeSlideIn 0.8s forwards;
     }
+    .contact-card[data-anim-delay="0.2s"] { animation-delay: 0.2s; }
+    .contact-card[data-anim-delay="0.4s"] { animation-delay: 0.4s; }
     .contact-card:hover {
       transform: translateY(-4px);
     }
@@ -786,47 +869,17 @@
     .contact-card p {
       font-size: 0.95rem;
       color: var(--clr-dark);
-    }
-    #contact form {
-      flex: 1 1 500px;
-      min-width: 300px;
-      max-width: 600px;
-    }
-    #contact form input,
-    #contact form textarea {
-      width: 100%;
-      padding: 12px 14px;
-      margin-bottom: 16px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      font-size: 0.95rem;
-      color: var(--clr-dark);
-      font-family: 'Poppins', sans-serif;
-    }
-    #contact form button {
-      display: inline-block;
-      padding: 12px 28px;
-      background-color: var(--clr-primary);
-      color: var(--clr-light);
-      border: none;
-      border-radius: 4px;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: background-color 0.3s, transform 0.3s;
-      font-family: 'Poppins', sans-serif;
-      font-weight: 500;
-    }
-    #contact form button:hover {
-      background-color: #2980b9;
-      transform: translateY(-2px);
+      margin-top: 8px;
     }
 
-    /* — PIED DE PAGE — */
+    /* =========================
+         PIED DE PAGE
+       ========================= */
     footer {
-      background-color: var(--clr-light);
+      background-color: var(--clr-secondary);
       text-align: center;
       padding: 20px 0;
-      color: var(--clr-muted);
+      color: #fff;
       font-size: 0.9rem;
       font-family: 'Poppins', sans-serif;
     }
@@ -840,17 +893,17 @@
       }
       header .logo {
         margin-bottom: 10px;
-        font-size: 2rem;
+        font-size: 1.8rem;
       }
       header nav ul {
         flex-wrap: wrap;
         justify-content: center;
       }
       .hero h1 {
-        font-size: 3.5rem;
+        font-size: 3rem;
       }
       .apropos-wrapper {
-        flex-direction: column;
+        flex-direction: column-reverse;
         text-align: center;
       }
       .apropos-image {
@@ -859,20 +912,37 @@
       .tabs {
         justify-content: center;
       }
-      .skills-wrapper {
-        flex-direction: column;
-        align-items: center;
+      .circle-container {
+        grid-template-columns: repeat(2, minmax(100px, 1fr));
+      }
+      .timeline {
+        padding-left: 20px;
+      }
+      .timeline::before {
+        left: 10px;
+      }
+      .timeline-entry .dot {
+        left: 2px;
+      }
+      .timeline-entry .content {
+        margin-left: 30px;
+      }
+      .exp-cards {
+        grid-template-columns: 1fr;
+      }
+      .cards-projet {
+        grid-template-columns: 1fr;
       }
       .contact-wrapper {
         flex-direction: column;
-        align-items: center;
       }
     }
   </style>
 </head>
 <body>
-
-  <!-- ========== HEADER FIXE ========== -->
+  <!-- =========================
+       HEADER FIXE
+  ========================= -->
   <header>
     <div class="logo">Sawera Akhtar</div>
     <nav>
@@ -887,104 +957,94 @@
     </nav>
   </header>
 
-  <!-- ========== PAGE DE GARDE / HERO ========== -->
+  <!-- =========================
+       PAGE DE GARDE / HERO
+  ========================= -->
   <section class="hero" id="hero">
     <h1><i class="fas fa-laptop-code"></i>&nbsp;Sawera Akhtar</h1>
-    <p>Étudiante en Informatique &amp; Big Data – Future étudiante en Master Big Data, Université Paris 8 (Rentrée 2025)</p>
+    <p>Étudiante en Informatique &amp; Big Data – Future étudiante en Master Big Data (Paris 8, 2025)</p>
     <a href="cv/Sawera-Akhtar-CV.pdf" class="btn" target="_blank">
       <i class="fas fa-download"></i>&nbsp;Télécharger mon CV
     </a>
-
-    <!-- Icônes sociales (LinkedIn & Twitter comme exemple) -->
     <div class="socials">
       <a href="https://www.linkedin.com/in/sawera-akhtar-3451b8201" target="_blank">
         <i class="fab fa-linkedin-in"></i>
       </a>
-      <a href="https://twitter.com/sawera_akhtar" target="_blank">
-        <i class="fab fa-twitter"></i>
+      <a href="mailto:sawera18@outlook.fr">
+        <i class="fas fa-envelope"></i>
       </a>
     </div>
-
-    <!-- Indicateur “faire défiler” -->
     <div class="scroll-down">
       <i class="fas fa-chevron-down"></i>
     </div>
   </section>
 
-  <!-- ========== CONTENU PRINCIPAL ========== -->
+  <!-- =========================
+       CONTENU PRINCIPAL
+  ========================= -->
   <main>
-
     <!-- =========================
          SECTION “À PROPOS”
     ========================= -->
     <section id="a-propos">
       <div class="section-content">
-        <h2><i class="fas fa-user"></i>&nbsp;À PROPOS</h2>
+        <h2 data-anim-delay="0.2s"><i class="fas fa-user"></i>&nbsp;À PROPOS</h2>
         <div class="apropos-wrapper">
-          <!-- Photo + Effet Calque -->
+          <!-- Photo + Calque -->
           <div class="apropos-image">
             <div class="layer-back"></div>
             <div class="layer-front">
-              <img src="images/sawera%20akhtar%20photo.jpg" alt="Photo de profil Sawera Akhtar">
+              <img src="images/sawera akhtar photo.jpg" alt="Photo de profil Sawera Akhtar" />
             </div>
           </div>
-
           <!-- Texte + Onglets -->
           <div class="apropos-text">
-
-            <!-- Titre et sous-titre -->
             <div class="intro">
-              <h1>Sawera Akhtar</h1>
-              <p>Étudiante en Informatique – Admise en Master Big Data (Université Paris 8) pour la rentrée 2025</p>
+              <h1 data-anim-delay="0.4s">Sawera Akhtar</h1>
+              <p data-anim-delay="0.6s">Actuellement en Licence Professionnelle Développeur Informatique Multisupport en alternance, je me spécialise dans le développement web/mobile et m’oriente vers le Big Data pour apporter des solutions scalables et performantes.</p>
             </div>
-
-            <!-- Onglets -->
-            <div class="tabs">
+            <div class="tabs" data-anim-delay="0.8s">
               <button class="tab-button active" data-tab="presentation">Présentation</button>
               <button class="tab-button" data-tab="langues">Langues</button>
               <button class="tab-button" data-tab="softskills">Soft Skills</button>
               <button class="tab-button" data-tab="passions">Passions</button>
             </div>
-
-            <!-- Contenus des onglets -->
-            <div class="tab-contents">
+            <div class="tab-contents" data-anim-delay="1s">
               <!-- Présentation -->
               <div class="tab-content" id="presentation" style="display: block;">
-                <p>Actuellement en Licence Professionnelle Développeur Informatique Multisupport en alternance, je me passionne pour le développement web et mobile. Mon objectif est de me spécialiser dans la conception d’applications Big Data, orientées performance et UX.</p>
-                <p>Mon parcours m’a permis de développer de solides compétences en langages de programmation (Java, C#, JavaScript, PHP), ainsi qu’en bases de données (MySQL, MongoDB) et en environnement mobile (Android Studio). J’accompagne également mes études d’une veille technologique constante et de projets personnels qui enrichissent mes savoir-faire.</p>
-                <p>Si vous souhaitez en savoir plus ou me contacter, n’hésitez pas à parcourir ce site ou à <a href="cv/Sawera-Akhtar-CV.pdf" style="color: var(--clr-primary); font-weight: 500;">télécharger mon CV</a> !</p>
+                <p>Développeuse web/mobile passionnée, je m’attache à créer des applications ergonomiques, performantes et durables. Mes expériences en alternance m’ont permis d’acquérir une grande autonomie, un sens du travail en équipe Agile, ainsi qu’une curiosité constante pour les nouvelles technologies.</p>
+                <p>Je complète mon parcours avec du développement personnel (projets open source, veille technologique) pour enrichir mes compétences et rester à la pointe.</p>
               </div>
               <!-- Langues -->
               <div class="tab-content" id="langues" style="display: none;">
                 <ul>
                   <li><strong>Français</strong> : langue maternelle</li>
-                  <li><strong>Anglais</strong> : niveau intermédiaire (B2), expériences en contexte pro</li>
-                  <li><strong>Espagnol</strong> : niveau scolaire (B1), utilisé lors de projets académiques</li>
+                  <li><strong>Anglais</strong> : niveau intermédiaire (B2), expériences pro en contexte international</li>
+                  <li><strong>Espagnol</strong> : niveau scolaire (B1), utilisé lors de projets universitaires</li>
                 </ul>
               </div>
               <!-- Soft Skills -->
               <div class="tab-content" id="softskills" style="display: none;">
                 <ul>
-                  <li>Autonomie et prise d’initiative</li>
-                  <li>Travail en équipe (méthode Agile / Scrum)</li>
-                  <li>Communication claire et empathie</li>
-                  <li>Organisation et gestion du temps</li>
+                  <li>Autonomie & prise d’initiative</li>
+                  <li>Communication claire & empathie</li>
+                  <li>Travail en équipe (méthode Agile)</li>
+                  <li>Organisation & gestion du temps</li>
                 </ul>
               </div>
               <!-- Passions -->
               <div class="tab-content" id="passions" style="display: none;">
                 <ul>
-                  <li>Programmation et contributions open source</li>
-                  <li>Photographie urbaine et retouches (Lightroom/Photoshop)</li>
-                  <li>Voyages (Europe &amp; Asie du Sud-Est) et découvertes culturelles</li>
-                  <li>Jeux vidéo – intérêt pour la conception de gameplay</li>
+                  <li>Programmation & contributions open source</li>
+                  <li>Photographie urbaine & retouches Lightroom/Photoshop</li>
+                  <li>Voyages (Europe, Asie du Sud-Est)</li>
+                  <li>Jeux vidéo & conception de gameplay</li>
                 </ul>
               </div>
             </div>
-
-          </div><!-- / .apropos-text -->
-        </div><!-- / .apropos-wrapper -->
-      </div><!-- / .section-content -->
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- =========================
@@ -992,21 +1052,19 @@
     ========================= -->
     <section id="competences">
       <div class="section-content">
-        <h2><i class="fas fa-cogs"></i>&nbsp;MES COMPÉTENCES</h2>
+        <h2 data-anim-delay="0.2s"><i class="fas fa-cogs"></i>&nbsp;MES COMPÉTENCES</h2>
         <div class="skills-wrapper">
-
-          <!-- COLONNE GAUCHE : BARRES CIRCULAIRES -->
+          <!-- Colonne gauche : Barres circulaires -->
           <div class="skills-left">
             <div class="pretitle">Ce que je sais faire</div>
-            <!-- COMPÉTENCES DATA -->
-            <h2 style="font-size:1.8rem; margin-bottom:16px;">Compétences Data</h2>
+            <h3>Compétences Data</h3>
             <p>En tant qu’étudiante Big Data &amp; Informatique, j’ai développé ces compétences :</p>
             <div class="circle-container">
               <!-- Python (90%) -->
               <div class="progress-circle" style="--pct:90; --clr: var(--clr-skill-data);">
                 <svg viewBox="0 0 120 120">
                   <circle class="bg" cx="60" cy="60" r="55"></circle>
-                  <circle class="progress" cx="60" cy="60" r="55" stroke="var(--clr)"></circle>
+                  <circle class="progress" cx="60" cy="60" r="55"></circle>
                 </svg>
                 <div class="label">90%</div>
                 <div class="text">Python</div>
@@ -1015,7 +1073,7 @@
               <div class="progress-circle" style="--pct:80; --clr: var(--clr-skill-db);">
                 <svg viewBox="0 0 120 120">
                   <circle class="bg" cx="60" cy="60" r="55"></circle>
-                  <circle class="progress" cx="60" cy="60" r="55" stroke="var(--clr)"></circle>
+                  <circle class="progress" cx="60" cy="60" r="55"></circle>
                 </svg>
                 <div class="label">80%</div>
                 <div class="text">SQL / MongoDB</div>
@@ -1024,7 +1082,7 @@
               <div class="progress-circle" style="--pct:75; --clr: var(--clr-skill-data);">
                 <svg viewBox="0 0 120 120">
                   <circle class="bg" cx="60" cy="60" r="55"></circle>
-                  <circle class="progress" cx="60" cy="60" r="55" stroke="var(--clr)"></circle>
+                  <circle class="progress" cx="60" cy="60" r="55"></circle>
                 </svg>
                 <div class="label">75%</div>
                 <div class="text">Pandas / NumPy</div>
@@ -1033,22 +1091,21 @@
               <div class="progress-circle" style="--pct:65; --clr: var(--clr-skill-data);">
                 <svg viewBox="0 0 120 120">
                   <circle class="bg" cx="60" cy="60" r="55"></circle>
-                  <circle class="progress" cx="60" cy="60" r="55" stroke="var(--clr)"></circle>
+                  <circle class="progress" cx="60" cy="60" r="55"></circle>
                 </svg>
                 <div class="label">65%</div>
                 <div class="text">Hadoop / Spark</div>
               </div>
             </div>
 
-            <!-- COMPÉTENCES DÉVELOPPEMENT -->
-            <h2 style="font-size:1.8rem; margin:40px 0 16px;">Compétences Développement</h2>
+            <h3 style="margin-top: 40px;">Compétences Développement</h3>
             <p>En parallèle, je maîtrise également :</p>
             <div class="circle-container">
               <!-- Java (85%) -->
               <div class="progress-circle" style="--pct:85; --clr: var(--clr-skill-dev);">
                 <svg viewBox="0 0 120 120">
                   <circle class="bg" cx="60" cy="60" r="55"></circle>
-                  <circle class="progress" cx="60" cy="60" r="55" stroke="var(--clr)"></circle>
+                  <circle class="progress" cx="60" cy="60" r="55"></circle>
                 </svg>
                 <div class="label">85%</div>
                 <div class="text">Java</div>
@@ -1057,7 +1114,7 @@
               <div class="progress-circle" style="--pct:80; --clr: var(--clr-skill-dev);">
                 <svg viewBox="0 0 120 120">
                   <circle class="bg" cx="60" cy="60" r="55"></circle>
-                  <circle class="progress" cx="60" cy="60" r="55" stroke="var(--clr)"></circle>
+                  <circle class="progress" cx="60" cy="60" r="55"></circle>
                 </svg>
                 <div class="label">80%</div>
                 <div class="text">JavaScript</div>
@@ -1066,7 +1123,7 @@
               <div class="progress-circle" style="--pct:90; --clr: var(--clr-skill-dev);">
                 <svg viewBox="0 0 120 120">
                   <circle class="bg" cx="60" cy="60" r="55"></circle>
-                  <circle class="progress" cx="60" cy="60" r="55" stroke="var(--clr)"></circle>
+                  <circle class="progress" cx="60" cy="60" r="55"></circle>
                 </svg>
                 <div class="label">90%</div>
                 <div class="text">HTML5 / CSS3</div>
@@ -1075,22 +1132,21 @@
               <div class="progress-circle" style="--pct:75; --clr: var(--clr-skill-dev);">
                 <svg viewBox="0 0 120 120">
                   <circle class="bg" cx="60" cy="60" r="55"></circle>
-                  <circle class="progress" cx="60" cy="60" r="55" stroke="var(--clr)"></circle>
+                  <circle class="progress" cx="60" cy="60" r="55"></circle>
                 </svg>
                 <div class="label">75%</div>
                 <div class="text">Node.js</div>
               </div>
             </div>
 
-            <!-- OUTILS & DIVERS -->
-            <h2 style="font-size:1.8rem; margin:40px 0 16px;">Outils &amp; Divers</h2>
+            <h3 style="margin-top: 40px;">Outils &amp; Divers</h3>
             <p>Enfin, j’utilise régulièrement :</p>
             <div class="circle-container">
               <!-- Git (80%) -->
               <div class="progress-circle" style="--pct:80; --clr: var(--clr-skill-tools);">
                 <svg viewBox="0 0 120 120">
                   <circle class="bg" cx="60" cy="60" r="55"></circle>
-                  <circle class="progress" cx="60" cy="60" r="55" stroke="var(--clr)"></circle>
+                  <circle class="progress" cx="60" cy="60" r="55"></circle>
                 </svg>
                 <div class="label">80%</div>
                 <div class="text">Git</div>
@@ -1099,7 +1155,7 @@
               <div class="progress-circle" style="--pct:70; --clr: var(--clr-skill-tools);">
                 <svg viewBox="0 0 120 120">
                   <circle class="bg" cx="60" cy="60" r="55"></circle>
-                  <circle class="progress" cx="60" cy="60" r="55" stroke="var(--clr)"></circle>
+                  <circle class="progress" cx="60" cy="60" r="55"></circle>
                 </svg>
                 <div class="label">70%</div>
                 <div class="text">Linux</div>
@@ -1108,7 +1164,7 @@
               <div class="progress-circle" style="--pct:65; --clr: var(--clr-skill-tools);">
                 <svg viewBox="0 0 120 120">
                   <circle class="bg" cx="60" cy="60" r="55"></circle>
-                  <circle class="progress" cx="60" cy="60" r="55" stroke="var(--clr)"></circle>
+                  <circle class="progress" cx="60" cy="60" r="55"></circle>
                 </svg>
                 <div class="label">65%</div>
                 <div class="text">Docker</div>
@@ -1117,15 +1173,15 @@
               <div class="progress-circle" style="--pct:60; --clr: var(--clr-skill-tools);">
                 <svg viewBox="0 0 120 120">
                   <circle class="bg" cx="60" cy="60" r="55"></circle>
-                  <circle class="progress" cx="60" cy="60" r="55" stroke="var(--clr)"></circle>
+                  <circle class="progress" cx="60" cy="60" r="55"></circle>
                 </svg>
                 <div class="label">60%</div>
                 <div class="text">UML / Figma</div>
               </div>
             </div>
-          </div> <!-- / .skills-left -->
+          </div>
 
-          <!-- COLONNE CENTRALE : ICÔNES MÉTIERS -->
+          <!-- Colonne centrale : icônes métiers -->
           <div class="icons-center">
             <div><i class="fas fa-database"></i></div>
             <div><i class="fas fa-chart-line"></i></div>
@@ -1135,7 +1191,7 @@
             <div><i class="fas fa-cogs"></i></div>
           </div>
 
-          <!-- COLONNE LABELS : description des icônes -->
+          <!-- Colonne droite : labels métiers -->
           <div class="labels-center">
             <div>Analyse de données</div>
             <div>Visualisation Data</div>
@@ -1145,208 +1201,224 @@
             <div>Modélisation & UML</div>
           </div>
 
-          <!-- COLONNE DROITE : NUAGE DE MOTS -->
+          <!-- Colonne extrême droite : nuage de mots -->
           <div class="wordcloud-right">
-            <img src="images/wordcloud.png" alt="Nuage de mots compétences">
+            <img src="images/wordcloud.png" alt="Nuage de mots compétences" />
           </div>
-
-        </div> <!-- / .skills-wrapper -->
-      </div> <!-- / .section-content -->
+        </div>
+      </div>
     </section>
 
     <!-- =========================
-         SECTION “FORMATION”
+         SECTION “FORMATION” (TIMELINE)
     ========================= -->
     <section id="formation">
       <div class="section-content">
-        <h2><i class="fas fa-graduation-cap"></i>&nbsp;FORMATION</h2>
-        <div class="cards-formation">
-          <!-- Carte 1 : Master Big Data -->
-          <div class="carte-formation">
-            <img src="images/logo-paris8-couleurs-officielles.jpg" alt="Logo Paris 8" class="logo-formation">
-            <div class="date">2025 – 2027</div>
-            <h3><i class="fas fa-book"></i>&nbsp;Master Big Data</h3>
-            <p><strong>Université Paris 8, Seine-Saint-Denis</strong></p>
-            <p>Admission en Master Informatique (spécialité Big Data) : data science, apprentissage automatique, architecture Big Data.</p>
+        <h2 data-anim-delay="0.2s"><i class="fas fa-graduation-cap"></i>&nbsp;FORMATION</h2>
+        <div class="timeline">
+          <!-- Master Big Data -->
+          <div class="timeline-entry" data-anim-delay="0.4s">
+            <div class="dot"></div>
+            <div class="content">
+              <div class="date">2025 – 2027</div>
+              <h3><i class="fas fa-book"></i>&nbsp;Master Big Data</h3>
+              <p><strong>Université Paris 8, Seine-Saint-Denis</strong></p>
+              <p>Admission en Master Informatique (spécialité Big Data) : data science, apprentissage automatique, architecture Big Data.</p>
+              <img src="images/logo-paris8.jpg" alt="Logo Paris 8" class="logo-company" />
+            </div>
           </div>
-          <!-- Carte 2 : Licence STS Informatique -->
-          <div class="carte-formation">
-            <img src="images/cnam-logo.png" alt="Logo CNAM" class="logo-formation">
-            <div class="date">2024 – 2025</div>
-            <h3><i class="fas fa-book"></i>&nbsp;Licence STS Informatique</h3>
-            <p><strong>CNAM (Paris I), Seine-Saint-Denis</strong></p>
-            <p>Licence Sciences Technologies Santé mention Informatique : algorithmique, dev. web, bases de données.</p>
+          <!-- Licence STS Informatique -->
+          <div class="timeline-entry" data-anim-delay="0.6s">
+            <div class="dot"></div>
+            <div class="content">
+              <div class="date">2024 – 2025</div>
+              <h3><i class="fas fa-book"></i>&nbsp;Licence STS Informatique</h3>
+              <p><strong>CNAM (Paris I), Seine-Saint-Denis</strong></p>
+              <p>Licence Sciences Technologies Santé mention Informatique : algorithmique, dev. web, bases de données.</p>
+              <img src="images/logo-cnam.png" alt="Logo CNAM" class="logo-company" />
+            </div>
           </div>
-          <!-- Carte 3 : Bachelor Engineering -->
-          <div class="carte-formation">
-            <img src="images/supinfo-logo-2020-noir-png.png" alt="Logo Supinfo" class="logo-formation">
-            <div class="date">2023 – 2024</div>
-            <h3><i class="fas fa-book"></i>&nbsp;Bachelor Engineering</h3>
-            <p><strong>Supinfo, Paris</strong></p>
-            <p>3ᵉ année validée : ingénierie logicielle, gestion de projets informatiques, bases de données avancées.</p>
+          <!-- Bachelor Engineering -->
+          <div class="timeline-entry" data-anim-delay="0.8s">
+            <div class="dot"></div>
+            <div class="content">
+              <div class="date">2023 – 2024</div>
+              <h3><i class="fas fa-book"></i>&nbsp;Bachelor Engineering</h3>
+              <p><strong>Supinfo, Paris</strong></p>
+              <p>3ᵉ année validée : ingénierie logicielle, gestion de projets, BDs avancées.</p>
+              <img src="images/logo-supinfo.png" alt="Logo Supinfo" class="logo-company" />
+            </div>
           </div>
-          <!-- Carte 4 : BTS SNIR -->
-          <div class="carte-formation">
-            <img src="images/1-logo-couleur_Lycee-Bergson-Jacquard.jpg" alt="Logo Lycée Le Corbusier" class="logo-formation">
-            <div class="date">2021 – 2023</div>
-            <h3><i class="fas fa-book"></i>&nbsp;BTS SNIR</h3>
-            <p><strong>Lycée Le Corbusier, Aubervilliers</strong></p>
-            <p>Option Informatique & Réseaux (SNIR) : systèmes embarqués, réseaux, C, Java, Linux, protocoles réseau.</p>
+          <!-- BTS SNIR -->
+          <div class="timeline-entry" data-anim-delay="1s">
+            <div class="dot"></div>
+            <div class="content">
+              <div class="date">2021 – 2023</div>
+              <h3><i class="fas fa-book"></i>&nbsp;BTS SNIR</h3>
+              <p><strong>Lycée Le Corbusier, Aubervilliers</strong></p>
+              <p>Option Informatique & Réseaux (SNIR) : systèmes embarqués, réseaux, C, Java, Linux, protocoles réseau.</p>
+              <img src="images/logo-lycee.png" alt="Logo Lycée Le Corbusier" class="logo-company" />
+            </div>
           </div>
-          <!-- Carte 5 : BAC STI2D (SIN) -->
-          <div class="carte-formation">
-            <img src="images/1-logo-couleur_Lycee-Bergson-Jacquard.jpg" alt="Logo Lycée Henri Bergson" class="logo-formation">
-            <div class="date">2018 – 2021</div>
-            <h3><i class="fas fa-book"></i>&nbsp;BAC STI2D (SIN)</h3>
-            <p><strong>Lycée Henri Bergson, Paris</strong></p>
-            <p>Spécialité Système Informatique & Numérique (SIN) : maquettes électroniques, projets IoT (Arduino).</p>
+          <!-- BAC STI2D (SIN) -->
+          <div class="timeline-entry" data-anim-delay="1.2s">
+            <div class="dot"></div>
+            <div class="content">
+              <div class="date">2018 – 2021</div>
+              <h3><i class="fas fa-book"></i>&nbsp;BAC STI2D (SIN)</h3>
+              <p><strong>Lycée Henri Bergson, Paris</strong></p>
+              <p>Spécialité Système Informatique &amp; Numérique (SIN) : maquettes électroniques, projets IoT (Arduino).</p>
+              <img src="images/logo-lycee.png" alt="Logo Lycée Henri Bergson" class="logo-company" />
+            </div>
           </div>
-        </div> <!-- / .cards-formation -->
-      </div> <!-- / .section-content -->
+        </div>
+      </div>
     </section>
 
     <!-- =========================
-         SECTION “EXPÉRIENCES” 
+         SECTION “EXPÉRIENCES”
     ========================= -->
     <section id="experiences">
       <div class="section-content">
-        <h2><i class="fas fa-briefcase"></i>&nbsp;EXPÉRIENCES</h2>
-        <div class="cards-experience">
-          <!-- Expérience 1 -->
-          <div class="carte-experience">
+        <h2 data-anim-delay="0.2s"><i class="fas fa-briefcase"></i>&nbsp;EXPÉRIENCES</h2>
+        <div class="exp-cards">
+          <!-- Expérience 1 : K&P Finance -->
+          <div class="exp-card" data-anim-delay="0.4s">
+            <img src="images/logo-kpfinance.jpg" alt="Logo K&amp;P Finance" class="logo-company" />
             <div class="date">Fév 2025 – Présent</div>
             <h3><i class="fas fa-building"></i>&nbsp;K&amp;P Finance (Paris 6<sup>e</sup>)</h3>
             <p><strong>Service Informatique – Refonte du CRM interne</strong></p>
             <ul>
               <li>Back-end Java &amp; C# : refonte architecturale, API REST.</li>
-              <li>Front-end & UX : jQuery, Bootstrap, CSS personnalisée.</li>
-              <li>Optimisation des performances et dashboard métier.</li>
+              <li>Front-end &amp; UX : jQuery, Bootstrap, CSS personnalisée.</li>
+              <li>Optimisation des performances, mise en place d’un dashboard métier.</li>
             </ul>
-            <p>Résultat : CRM modernisé, réactif – productivité +25 % pour l’équipe.</p>
+            <p>Résultat : CRM modernisé, réactif – productivité +25 %.</p>
+            <a href="docs/crm-kpfinance.pdf" target="_blank" class="doc-link">
+              <i class="fas fa-file-alt"></i>&nbsp;Voir documentation
+            </a>
           </div>
-          <!-- Expérience 2 -->
-          <div class="carte-experience">
+          <!-- Expérience 2 : Spie Batignolles -->
+          <div class="exp-card" data-anim-delay="0.6s">
+            <img src="images/logo-spie.jpg" alt="Logo Spie Batignolles" class="logo-company" />
             <div class="date">Mai 2022 – Juil 2022</div>
             <h3><i class="fas fa-tools"></i>&nbsp;Spie Batignolles (Nanterre)</h3>
             <p><strong>Stage Support Informatique</strong></p>
             <ul>
-              <li>Maintenance & mises à jour des postes de travail.</li>
-              <li>Gestion des incidents, dépannage matériel & logiciel.</li>
+              <li>Maintenance &amp; mises à jour des postes de travail.</li>
+              <li>Gestion des incidents, dépannage matériel &amp; logiciel.</li>
               <li>Administration de parc, configuration des serveurs internes.</li>
             </ul>
             <p>Résultat : suivi de tickets optimisé, réduction de 30 % du temps d’arrêt.</p>
+            <a href="docs/stage-spie.pdf" target="_blank" class="doc-link">
+              <i class="fas fa-file-alt"></i>&nbsp;Voir documentation
+            </a>
           </div>
-        </div> <!-- / .cards-experience -->
-      </div> <!-- / .section-content -->
+        </div>
+      </div>
     </section>
 
     <!-- =========================
-         SECTION “PROJETS” 
+         SECTION “PROJETS”
     ========================= -->
     <section id="projets">
       <div class="section-content">
-        <h2><i class="fas fa-lightbulb"></i>&nbsp;PROJETS PERSONNELS</h2>
+        <h2 data-anim-delay="0.2s"><i class="fas fa-lightbulb"></i>&nbsp;PROJETS PERSONNELS</h2>
         <div class="cards-projet">
           <!-- Projet 1 : Exosquelette -->
-          <div class="carte-projet">
+          <div class="carte-projet" data-anim-delay="0.4s">
             <h3><i class="fas fa-robot"></i>&nbsp;Exosquelette de portage</h3>
-            <p><strong>Contexte :</strong> Projet Univ. Paris 8 &amp; Génie Mécanique pour concevoir un prototype d’aide au portage.</p>
+            <p><strong>Contexte :</strong> Projet collaboratif Univ. Paris 8 &amp; Génie Mécanique pour concevoir un prototype d’aide au portage.</p>
             <p><strong>Technos :</strong> Arduino, servomoteurs, capteurs de flexion, impression 3D.</p>
             <p><strong>Résultat :</strong> Prototype fonctionnel, capacité de soulager jusqu’à 5 kg.</p>
-            <a href="#" class="btn-projet"><i class="fas fa-file-alt"></i>&nbsp;Voir documentation</a>
+            <a href="docs/exosquelette.pdf" target="_blank" class="btn-projet">
+              <i class="fas fa-file-alt"></i>&nbsp;Voir documentation
+            </a>
           </div>
-          <!-- Projet 2 : App Android -->
-          <div class="carte-projet">
+          <!-- Projet 2 : Application Android -->
+          <div class="carte-projet" data-anim-delay="0.6s">
             <h3><i class="fas fa-mobile-alt"></i>&nbsp;Application Android (Wi-Fi)</h3>
             <p><strong>Contexte :</strong> Pilotage à distance du prototype d’exosquelette via smartphone.</p>
             <p><strong>Technos :</strong> Android Studio (Java), Volley (TCP/IP), Arduino UNO.</p>
-            <p><strong>Résultat :</strong> Contrôles en temps réel depuis Android, validé en démo labo.</p>
-            <a href="#" class="btn-projet"><i class="fas fa-file-alt"></i>&nbsp;Voir documentation</a>
+            <p><strong>Résultat :</strong> Contrôles en temps réel depuis Android, validé en démonstration labo.</p>
+            <a href="docs/app-android.pdf" target="_blank" class="btn-projet">
+              <i class="fas fa-file-alt"></i>&nbsp;Voir documentation
+            </a>
           </div>
           <!-- Projet 3 : Intégration capteurs -->
-          <div class="carte-projet">
+          <div class="carte-projet" data-anim-delay="0.8s">
             <h3><i class="fas fa-microchip"></i>&nbsp;Intégration capteurs &amp; servomoteurs</h3>
             <p><strong>Contexte :</strong> Améliorer la précision des mouvements de l’exosquelette.</p>
             <p><strong>Technos :</strong> Arduino Mega, capteur MPU-6050 (accéléromètre/gyroscope), C/C++.</p>
             <p><strong>Résultat :</strong> Précision augmentée de 30 %, meilleur confort de portage.</p>
-            <a href="#" class="btn-projet"><i class="fas fa-file-alt"></i>&nbsp;Voir documentation</a>
+            <a href="docs/integration-capteurs.pdf" target="_blank" class="btn-projet">
+              <i class="fas fa-file-alt"></i>&nbsp;Voir documentation
+            </a>
           </div>
-        </div> <!-- / .cards-projet -->
-      </div> <!-- / .section-content -->
+        </div>
+      </div>
     </section>
 
     <!-- =========================
-         SECTION “CONTACT” 
+         SECTION “CONTACT”
     ========================= -->
     <section id="contact">
       <div class="section-content">
-        <h2><i class="fas fa-envelope"></i>&nbsp;CONTACT</h2>
+        <h2 data-anim-delay="0.2s"><i class="fas fa-envelope"></i>&nbsp;CONTACT</h2>
         <div class="contact-wrapper">
           <!-- Carte Email -->
-          <div class="contact-card">
+          <div class="contact-card" data-anim-delay="0.4s">
             <h3><i class="fas fa-envelope"></i>&nbsp;Email</h3>
             <p><a href="mailto:sawera18@outlook.fr">sawera18@outlook.fr</a></p>
           </div>
-          <!-- Carte Téléphone -->
-          <div class="contact-card">
-            <h3><i class="fas fa-phone"></i>&nbsp;Téléphone</h3>
-            <p>06 02 42 08 33</p>
-          </div>
           <!-- Carte LinkedIn -->
-          <div class="contact-card">
+          <div class="contact-card" data-anim-delay="0.6s">
             <h3><i class="fas fa-linkedin"></i>&nbsp;LinkedIn</h3>
             <p><a href="https://www.linkedin.com/in/sawera-akhtar-3451b8201" target="_blank">linkedin.com/in/sawera-akhtar-3451b8201</a></p>
           </div>
-          <!-- Formulaire de contact -->
-          <form action="#" method="post">
-            <input type="text" name="nom" placeholder="Votre nom" required />
-            <input type="email" name="email" placeholder="Votre email" required />
-            <textarea name="message" rows="5" placeholder="Votre message..." required></textarea>
-            <button type="submit"><i class="fas fa-paper-plane"></i>&nbsp;Envoyer</button>
-          </form>
-        </div> <!-- / .contact-wrapper -->
-      </div> <!-- / .section-content -->
+        </div>
+      </div>
     </section>
-
   </main>
 
-  <!-- ========== PIED DE PAGE ========== -->
+  <!-- =========================
+       PIED DE PAGE
+  ========================= -->
   <footer>
     <p>© 2025 Sawera Akhtar – Tous droits réservés</p>
   </footer>
 
-  <!-- ===== Script pour onglets “À propos” & initialisation des cercles ===== -->
+  <!-- =========================
+       JavaScript (animations & onglets)
+  ========================= -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      // Onglets “À propos”
+      /* Onglets “À propos” */
       const tabButtons = document.querySelectorAll('.tab-button');
       const tabContents = document.querySelectorAll('.tab-content');
       tabButtons.forEach(btn => {
         btn.addEventListener('click', () => {
-          // Désactiver tous les boutons + masquer tous les contenus
+          // Désactive tous les boutons + cache les contenus
           tabButtons.forEach(b => {
             b.classList.remove('active');
-            b.style.backgroundColor = '#fff';
-            b.style.color = '#2c3e50';
-            b.style.border = '2px solid #ccc';
+            b.style.backgroundColor = 'var(--clr-light)';
+            b.style.color = 'var(--clr-dark)';
+            b.style.border = '2px solid var(--clr-muted)';
           });
           tabContents.forEach(c => c.style.display = 'none');
-
-          // Activer celui cliqué
+          // Active le bouton cliqué et affiche son contenu
           btn.classList.add('active');
           btn.style.backgroundColor = 'var(--clr-primary)';
-          btn.style.color = '#fff';
-          btn.style.border = 'none';
-
-          // Afficher contenu correspondant
+          btn.style.color = 'var(--clr-light)';
+          btn.style.border = '2px solid var(--clr-primary)';
           const cible = btn.getAttribute('data-tab');
           document.getElementById(cible).style.display = 'block';
         });
       });
 
-      // Animation des cercles de compétence
-      // Le CSS keyframe se charge grâce à la variable --pct déjà définie en inline style.
-      // Aucune autre JS spécifique n'est nécessaire, l'animation démarre automatiquement.
+      /* Les cercles de compétence s’animent automatiquement via CSS (progressAnim). */
+      /* Aucune fonction JS additionnelle n’est nécessaire pour déclencher l’animation. */
+
     });
   </script>
 </body>
