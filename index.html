@@ -221,7 +221,7 @@
       top: 20px;
       left: 20px;
     }
-    /* Titre décalé vers le bas pour laisser de la place au logo */
+    /* Titre décalé vers le bas pour laisser la place au logo */
     .carte-formation h3 {
       font-size: 1.2rem;
       margin-bottom: 8px;
@@ -254,22 +254,6 @@
       font-weight: 600;
       box-shadow: 0 2px 4px var(--clr-card-shadow);
     }
-
-    /* — Section : Expériences — */
-    /* (idem, vous pouvez appliquer des principes similaires si besoin) */
-    /* … */
-
-    /* — Section : Projets — */
-    /* (idem) */
-    /* … */
-
-    /* — Section : Compétences — */
-    /* (idem) */
-    /* … */
-
-    /* — Section : Contact — */
-    /* (idem) */
-    /* … */
 
     /* — Pied de page — */
     footer {
@@ -337,7 +321,8 @@
     <!-- ===== Section : À propos ===== -->
     <section id="a-propos">
       <div class="photo-profil">
-        <img src="images/profil.jpg" alt="Photo de profil de Sawera Akhtar" />
+        <!-- Photo de profil, avec espaces encodés en %20 -->
+        <img src="images/sawera%20akhtar%20photo.jpg" alt="Photo de profil de Sawera Akhtar" />
       </div>
       <div class="texte-profil">
         <h2><i class="fas fa-user-circle"></i> À propos de moi</h2>
@@ -362,46 +347,66 @@
     <section id="formation">
       <h2><i class="fas fa-graduation-cap"></i> Formation</h2>
       <div class="cards-formation">
-        <!-- Carte 1 -->
+        <!-- Carte 1 : Master Big Data (Paris 8) -->
         <div class="carte-formation">
-          <!-- Logo de l’établissement (ex. “images/logo-paris8.png”) -->
-          <img src="images/logo-paris8.png" alt="Logo Univ. Paris 8" class="logo-formation" />
+          <img
+            src="images/logo-paris8-couleurs-officielles.jpg"
+            alt="Logo Université Paris 8"
+            class="logo-formation"
+          />
           <div class="date">2025 – 2027</div>
           <h3><i class="fas fa-book"></i> Master Big Data</h3>
           <p><strong>Université Paris 8, Seine-Saint-Denis</strong></p>
           <p>Admission en Master Informatique (spécialité Big Data). Cours et travaux pratiques en data science, apprentissage automatique et architecture Big Data.</p>
         </div>
 
-        <!-- Carte 2 -->
+        <!-- Carte 2 : Licence STS Informatique (CNAM) -->
         <div class="carte-formation">
-          <img src="images/logo-cnam.png" alt="Logo CNAM" class="logo-formation" />
+          <img
+            src="images/cnam-logo.png"
+            alt="Logo CNAM"
+            class="logo-formation"
+          />
           <div class="date">2024 – En cours</div>
           <h3><i class="fas fa-book"></i> Licence STS Informatique</h3>
           <p><strong>CNAM (Paris I), Seine-Saint-Denis</strong></p>
           <p>Licence Sciences Technologies Santé mention Informatique (parcours Informatique générale). Projets en algorithmique, développement web et bases de données.</p>
         </div>
 
-        <!-- Carte 3 -->
+        <!-- Carte 3 : Bachelor Engineering (Supinfo) -->
         <div class="carte-formation">
-          <img src="images/logo-supinfo.png" alt="Logo Supinfo" class="logo-formation" />
+          <img
+            src="images/supinfo-logo-2020-noir-png.png"
+            alt="Logo Supinfo"
+            class="logo-formation"
+          />
           <div class="date">2023 – 2024</div>
           <h3><i class="fas fa-book"></i> Bachelor Engineering</h3>
           <p><strong>Supinfo, Paris</strong></p>
-          <p>3ᵉ année validée. Cours axés sur l’ingénierie logicielle, la gestion de projets informatiques, et les bases de données avancées.</p>
+          <p>3ᵉ année validée. Cours axés sur l’ingénierie logicielle, la gestion de projets informatiques et les bases de données avancées.</p>
         </div>
 
-        <!-- Carte 4 -->
+        <!-- Carte 4 : BTS SNIR (Lycée Le Corbusier) -->
+        <!-- (Si vous n’avez pas de logo Le Corbusier, vous pouvez laisser le <img> mais changer l’attribut alt.) -->
         <div class="carte-formation">
-          <img src="images/logo-le-corbusier.png" alt="Logo Lycée Le Corbusier" class="logo-formation" />
+          <img
+            src="images/1-logo-couleur_Lycee-Bergson-Jacquard.jpg"
+            alt="Logo Lycée Bergson (utilisé ici pour BTS SNIR / projet éducatif)"
+            class="logo-formation"
+          />
           <div class="date">2021 – 2023</div>
           <h3><i class="fas fa-book"></i> BTS SNIR</h3>
           <p><strong>Lycée Le Corbusier, Aubervilliers</strong></p>
-          <p>Option Informatique et Réseaux (SNIR). Apprentissage sur les systèmes embarqués, réseaux, programmation en C et Java, Linux et protocoles réseau.</p>
+          <p>Option Informatique et Réseaux (SNIR). Enseignement sur les systèmes embarqués, réseaux, programmation C et Java, Linux et protocoles réseau.</p>
         </div>
 
-        <!-- Carte 5 -->
+        <!-- Carte 5 : BAC STI2D (SIN) (Lycée Henri Bergson) -->
         <div class="carte-formation">
-          <img src="images/logo-hb.png" alt="Logo Lycée Henri Bergson" class="logo-formation" />
+          <img
+            src="images/1-logo-couleur_Lycee-Bergson-Jacquard.jpg"
+            alt="Logo Lycée Bergson"
+            class="logo-formation"
+          />
           <div class="date">2018 – 2021</div>
           <h3><i class="fas fa-book"></i> BAC STI2D (SIN)</h3>
           <p><strong>Lycée Henri Bergson, Paris</strong></p>
@@ -411,16 +416,16 @@
     </section>
 
     <!-- ===== Section : Expériences ===== -->
-    <!-- (reste identique ou adapté de la même manière) -->
+    <!-- (Adaptez de la même manière, en remplaçant les img par vos logos si nécessaire) -->
 
     <!-- ===== Section : Projets ===== -->
-    <!-- (idem) -->
+    <!-- (Idem) -->
 
     <!-- ===== Section : Compétences ===== -->
-    <!-- (idem) -->
+    <!-- (Idem) -->
 
     <!-- ===== Section : Contact ===== -->
-    <!-- (idem) -->
+    <!-- (Idem) -->
 
   </main>
 
@@ -430,4 +435,3 @@
   </footer>
 </body>
 </html>
-
