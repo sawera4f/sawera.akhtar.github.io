@@ -1,313 +1,350 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Portfolio • Sawera Akhtar</title>
 
-  <!-- ************** CSS Amélioré ************** -->
   <style>
-    /* 1. Police et fond général */
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f4f4f4;
-      color: #333;
-      line-height: 1.6;
+    /* ===== Variables de couleurs ===== */
+    :root {
+      --clr-bg: #f0f2f5;
+      --clr-primary: #1abc9c;
+      --clr-dark: #2c3e50;
+      --clr-light: #ffffff;
+      --clr-text: #333333;
+      --clr-muted: #777777;
+      --clr-box: #ffffff;
+      --clr-box-shadow: rgba(0, 0, 0, 0.1);
     }
 
-    /* 2. En‐tête (header) avec fond sombre */
-    header {
-      background-color: #2c3e50;
-      color: #fff;
-      padding: 40px 20px;
-      text-align: center;
-      position: relative;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 2.8rem;
-      letter-spacing: 1px;
-    }
-    header p {
-      margin-top: 10px;
-      font-size: 1.1rem;
-      opacity: 0.85;
-    }
-
-    /* 3. Barre de navigation fixe (optionnel) */
-    nav {
-      background-color: #34495e;
-      color: #fff;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-    nav ul {
-      list-style: none;
+    /* ===== Reset / Base ===== */
+    * {
       margin: 0;
       padding: 0;
-      display: flex;
-      justify-content: center;
+      box-sizing: border-box;
     }
-    nav li {
-      margin: 0 15px;
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--clr-bg);
+      color: var(--clr-text);
+      line-height: 1.5;
     }
-    nav a {
-      display: block;
-      padding: 12px 0;
-      color: #ecf0f1;
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 0.95rem;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-    nav a:hover {
-      color: #1abc9c;
-      border-bottom: 2px solid #1abc9c;
-    }
-
-    /* 4. Conteneur principal centré */
-    .container {
-      max-width: 900px;
-      margin: 30px auto;
-      padding: 0 20px;
-    }
-
-    /* 5. Styles des sections (cards) */
-    section {
-      background-color: #fff;
-      margin-bottom: 30px;
-      padding: 25px 20px;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
-    section h2 {
-      font-size: 1.8rem;
-      margin-bottom: 15px;
-      color: #2c3e50;
-      position: relative;
-      padding-bottom: 8px;
-    }
-    /* Ligne colorée sous chaque titre de section */
-    section h2::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 50px;
-      height: 3px;
-      background-color: #1abc9c;
-    }
-
-    /* 6. Articles (pour expériences/projets) */
-    article {
-      margin-bottom: 20px;
-    }
-    article h3 {
-      margin: 0 0 8px 0;
-      font-size: 1.4rem;
-      color: #34495e;
-    }
-    article p,
-    article ul {
-      margin: 6px 0;
-    }
-    article ul {
-      list-style: disc;
-      padding-left: 20px;
-    }
-
-    /* 7. Liens et boutons */
     a {
-      color: #1abc9c;
+      color: var(--clr-primary);
       text-decoration: none;
-      font-weight: 500;
     }
     a:hover {
       text-decoration: underline;
     }
-    .btn {
-      display: inline-block;
-      margin-top: 10px;
-      padding: 8px 16px;
-      background-color: #1abc9c;
-      color: #fff;
-      border-radius: 4px;
-      text-transform: uppercase;
-      font-size: 0.9rem;
-      letter-spacing: 0.5px;
+
+    /* ===== Conteneur principal ===== */
+    .timeline-container {
+      position: relative;
+      max-width: 900px;
+      margin: 50px auto;
+      padding: 0 20px;
     }
-    .btn:hover {
-      background-color: #16a085;
+    /* Ligne centrale verticale */
+    .timeline-container::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 4px;
+      height: 100%;
+      background-color: var(--clr-primary);
     }
 
-    /* 8. Pied de page */
+    /* ===== Bloc de timeline ===== */
+    .timeline-item {
+      position: relative;
+      width: 50%;
+      padding: 20px 40px;
+    }
+    /* Positionné à gauche ou à droite */
+    .timeline-item.left {
+      left: 0;
+    }
+    .timeline-item.right {
+      left: 50%;
+    }
+    /* Connexion au cercle (flèche) */
+    .timeline-item.left::before,
+    .timeline-item.right::before {
+      content: "";
+      position: absolute;
+      top: 30px; /* hauteur du cercle - ajustable */
+      width: 20px;
+      height: 20px;
+      background-color: var(--clr-box);
+      border: 4px solid var(--clr-primary);
+      border-radius: 50%;
+      z-index: 2;
+    }
+    .timeline-item.left::before {
+      right: -44px; /* place le cercle légèrement à l’extérieur de la ligne */
+    }
+    .timeline-item.right::before {
+      left: -44px;
+    }
+
+    /* Contenu de chaque bloc */
+    .timeline-item .content {
+      background-color: var(--clr-box);
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px var(--clr-box-shadow);
+    }
+    /* Flèche pointant vers la ligne */
+    .timeline-item.left .content::after,
+    .timeline-item.right .content::after {
+      content: "";
+      position: absolute;
+      top: 30px;
+      border: 10px solid transparent;
+    }
+    .timeline-item.left .content::after {
+      right: -20px;
+      border-left-color: var(--clr-box);
+    }
+    .timeline-item.right .content::after {
+      left: -20px;
+      border-right-color: var(--clr-box);
+    }
+
+    /* Titres de section dans un cercle */
+    .timeline-item .title-circle {
+      position: absolute;
+      top: 20px; /* ajuste la position verticale du cercle */
+      width: 60px;
+      height: 60px;
+      background-color: var(--clr-primary);
+      color: var(--clr-light);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 0.85rem;
+      text-align: center;
+      padding: 5px;
+    }
+    .timeline-item.left .title-circle {
+      right: -90px; /* centré par rapport au cercle de la ligne */
+    }
+    .timeline-item.right .title-circle {
+      left: -90px;
+    }
+
+    /* Titres & textes dans le bloc */
+    .timeline-item .content h3 {
+      margin-top: 0;
+      font-size: 1.4rem;
+      color: var(--clr-dark);
+      margin-bottom: 8px;
+    }
+    .timeline-item .content p {
+      margin: 8px 0;
+      font-size: 0.95rem;
+    }
+    .timeline-item .content ul {
+      margin: 8px 0 0 20px;
+      list-style: disc;
+      color: var(--clr-muted);
+    }
+    .timeline-item .content ul li {
+      margin-bottom: 6px;
+    }
+
+    /* ===== Section : Profil (en‐tête) ===== */
+    .profile-header {
+      text-align: center;
+      margin-bottom: 50px;
+      position: relative;
+    }
+    .profile-header .avatar-circle {
+      width: 120px;
+      height: 120px;
+      background-color: var(--clr-primary);
+      border-radius: 50%;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: var(--clr-light);
+      font-weight: bold;
+      box-shadow: 0 2px 8px var(--clr-box-shadow);
+    }
+    .profile-header h1 {
+      margin: 15px 0 5px 0;
+      font-size: 2.5rem;
+      color: var(--clr-dark);
+    }
+    .profile-header p {
+      font-size: 1.1rem;
+      color: var(--clr-muted);
+    }
+
+    /* ===== Pied de page ===== */
     footer {
       text-align: center;
-      padding: 20px 0;
-      color: #666;
+      margin: 50px 0 20px 0;
+      color: var(--clr-muted);
       font-size: 0.9rem;
     }
 
-    /* 9. Responsive (petits écrans) */
-    @media(max-width: 600px) {
-      header h1 { font-size: 2rem; }
-      section h2 { font-size: 1.5rem; }
-      .btn { padding: 6px 12px; font-size: 0.85rem; }
-      nav ul { flex-wrap: wrap; }
-      nav li { margin: 5px 10px; }
+    /* ===== Responsive ===== */
+    @media (max-width: 768px) {
+      /* Timeline à 100% sans alternance */
+      .timeline-item,
+      .timeline-item.left,
+      .timeline-item.right {
+        width: 100%;
+        left: 0;
+        padding-left: 70px;
+        padding-right: 25px;
+      }
+      .timeline-item.left::before,
+      .timeline-item.right::before {
+        left: 20px;
+      }
+      .timeline-item.left .content::after,
+      .timeline-item.right .content::after {
+        left: 40px;
+        border-right-color: var(--clr-box);
+        border-left-color: transparent;
+        right: auto;
+      }
+      .timeline-item .title-circle {
+        left: -90px;
+        right: auto;
+      }
     }
   </style>
-  <!-- ********** Fin du CSS ********** -->
 </head>
 <body>
 
-  <!-- Barre de navigation (optionnelle, supprimez si vous ne voulez pas) -->
-  <nav>
-    <ul>
-      <li><a href="#a-propos">À propos</a></li>
-      <li><a href="#formation">Formation</a></li>
-      <li><a href="#experiences">Expériences</a></li>
-      <li><a href="#projets">Projets</a></li>
-      <li><a href="#competences">Compétences</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
-
-  <!-- En‐tête -->
-  <header>
+  <!-- ===== En‐tête / Profil ===== -->
+  <div class="profile-header">
+    <!-- Si vous voulez un avatar, remplacez “SA” par une image <img> ou vos initiales -->
+    <div class="avatar-circle">SA</div>
     <h1>Sawera Akhtar</h1>
-    <p>Étudiante en Informatique et Big Data – Recherche d’alternance 2025-2026</p>
-  </header>
+    <p>Étudiante en Informatique &amp; Big Data – Recherche d’alternance 2025-2026</p>
+  </div>
 
-  <!-- Conteneur principal -->
-  <div class="container">
+  <!-- ===== Timeline principal ===== -->
+  <div class="timeline-container">
 
-    <!-- 1. À propos / Profil -->
-    <section id="a-propos">
-      <h2>À propos</h2>
-      <p>Bonjour ! Je suis <strong>Sawera Akhtar</strong>, admise en Master Informatique, spécialité Big Data, à l’Université Paris 8.  
-      Je recherche un contrat en alternance à partir de septembre 2025 pour développer mes compétences en développement et en traitement de données, et contribuer à des projets innovants dans le domaine de l’informatique.</p>
-      <p><strong>Qualités :</strong> autonome, rigoureuse, ponctuelle, organisée.</p>
-      <p><strong>Engagements bénévoles :</strong></p>
-      <ul>
-        <li>Solidarité et insertion</li>
-        <li>Protection de la nature</li>
-        <li>Éducation pour tous</li>
-      </ul>
-    </section>
+    <!-- Formation (gauche) -->
+    <div class="timeline-item left">
+      <div class="title-circle">Formation</div>
+      <div class="content">
+        <h3>Master Big Data (2025-2027)</h3>
+        <p><strong>Université Paris 8, Seine-Saint-Denis</strong></p>
+        <p>Admission en Master Informatique, spécialité Big Data. Début : septembre 2025. Séminaires et travaux pratiques en traitement de données massives.</p>
+        <h3 style="margin-top: 15px;">Licence Informatique (depuis 2024)</h3>
+        <p><strong>CNAM (Paris I), Seine-Saint-Denis</strong></p>
+        <p>Étudiante en Licence Sciences Technologies Santé mention Informatique (parcours Informatique générale). Projets sur l’algorithmique et le développement web.</p>
+        <h3 style="margin-top: 15px;">BTS SNIR (2021-2023)</h3>
+        <p><strong>Lycée Le Corbusier, Aubervilliers</strong></p>
+        <p>Option Informatique et Réseaux (SNIR). Formation sur les systèmes embarqués, réseaux, programmation C et Java.</p>
+        <h3 style="margin-top: 15px;">BAC STI2D (2018-2021)</h3>
+        <p><strong>Lycée Henri Bergson, Paris</strong></p>
+        <p>Spécialité Système Informatique et Numérique (SIN). Réalisation de maquettes électroniques et projets IoT.</p>
+      </div>
+    </div>
 
-    <!-- 2. Formation -->
-    <section id="formation">
-      <h2>Formation</h2>
-      <ul>
-        <li><strong>Septembre 2025 – Août 2027 :</strong> Master Big Data – Université Paris 8, Seine-Saint-Denis</li>
-        <li><strong>Depuis Septembre 2024 :</strong> Licence STS mention Informatique (parcours Informatique générale) – CNAM, Seine-Saint-Denis</li>
-        <li><strong>Octobre 2023 – Mai 2024 :</strong> Bachelor Engineering (3ᵉ année validée) – Supinfo, Paris</li>
-        <li><strong>Septembre 2021 – Juillet 2023 :</strong> BTS Systèmes Numériques option Informatique et Réseaux (SNIR) – Lycée Le Corbusier, Aubervilliers</li>
-        <li><strong>Septembre 2018 – Juillet 2021 :</strong> BAC STI2D (Système Informatique et Numérique) – Lycée Henri Bergson, Paris</li>
-      </ul>
-    </section>
-
-    <!-- 3. Expériences professionnelles -->
-    <section id="experiences">
-      <h2>Expériences professionnelles</h2>
-
-      <article>
-        <h3>Février 2025 – Présent • Service informatique – K&amp;P Finance (Paris 6ᵉ)</h3>
-        <p><strong>Contexte :</strong> Refonte du CRM interne au sein du service informatique.</p>
-        <p><strong>Missions :</strong></p>
+    <!-- Expériences pro (droite) -->
+    <div class="timeline-item right">
+      <div class="title-circle">Expériences</div>
+      <div class="content">
+        <h3>Fév 2025 – Présent : K&amp;P Finance (Paris 6ᵉ)</h3>
+        <p><strong>Service informatique – Refonte du CRM interne</strong></p>
         <ul>
-          <li>Développement back-end (Java / C#).</li>
-          <li>Amélioration de l’UX/UI avec jQuery et CSS.</li>
-          <li>Optimisation des performances et mise en place de statistiques d’usage.</li>
+          <li>Back-end : Java, C#</li>
+          <li>UX/UI : jQuery, CSS</li>
+          <li>Optimisation des performances et tableau de bord de suivi d’usage</li>
         </ul>
-        <p><strong>Résultats :</strong> CRM plus réactif et fiabilisé, interface utilisateur améliorée, augmentation de la productivité du service.</p>
-      </article>
+        <p>Résultat : CRM modernisé, plus fluide et réactif, productivité +25 % pour l’équipe.</p>
 
-      <article>
-        <h3>Mai 2022 – Juillet 2022 • Stage Support Informatique – Spie Batignolles (Nanterre)</h3>
-        <p><strong>Contexte :</strong> Service support technique interne pour les équipes de chantier et bureaux.</p>
-        <p><strong>Missions :</strong></p>
+        <h3 style="margin-top: 15px;">Mai 2022 – Juil 2022 : Stage Support Informatique</h3>
+        <p><strong>Spie Batignolles (Nanterre)</strong></p>
         <ul>
-          <li>Maintenance informatique (installation/mise à jour de logiciels).</li>
-          <li>Gestion d’incidents et dépannage matériel.</li>
-          <li>Configuration de postes et administration système.</li>
+          <li>Maintenance et mise à jour des postes</li>
+          <li>Gestion des incidents et dépannage matériel</li>
+          <li>Administration de parc et configuration serveurs</li>
         </ul>
-        <p><strong>Résultats :</strong> Réduction des temps d’arrêt, amélioration du suivi des incidents grâce à la mise en place d’un système de tickets simplifié.</p>
-      </article>
+        <p>Résultat : amélioration du suivi des tickets, réduction de 30 % du temps d’arrêt.</p>
+      </div>
+    </div>
 
-    </section>
+    <!-- Projets persos (gauche) -->
+    <div class="timeline-item left">
+      <div class="title-circle">Projets</div>
+      <div class="content">
+        <h3>Bras exosquelette Université Paris 8</h3>
+        <p><strong>Contexte :</strong> Collab. avec le département génie mécanique pour assister le port d’objets lourds.</p>
+        <ul>
+          <li>Conception d’un prototype motorisé</li>
+          <li>Capteurs de position et impression 3D pour la structure</li>
+          <li>Programmation Arduino (C/C++)</li>
+        </ul>
+        <p>Résultat : prototype capable de soulager jusqu’à 5 kg, présenté lors de la soutenance de semestre.</p>
 
-    <!-- 4. Projets personnels -->
-    <section id="projets">
-      <h2>Projets personnels</h2>
+        <h3 style="margin-top: 15px;">Application Android de contrôle Wi-Fi</h3>
+        <p><strong>Contexte :</strong> Pilotage à distance du prototype d’exosquelette.</p>
+        <ul>
+          <li>Interface mobile sur Android Studio (Java)</li>
+          <li>Communication TCP/IP et bibliothèques Volley</li>
+          <li>Gestion des commandes de mouvements en temps réel</li>
+        </ul>
+        <p>Résultat : contrôle fluide depuis smartphone, validé en démonstration laboratoire.</p>
 
-      <article>
-        <h3>Création d’un bras exosquelette à porter (Université Paris 8)</h3>
-        <p><strong>Contexte :</strong> Projet universitaire avec le département génie mécanique pour concevoir un prototype d’aide au portage d’objets lourds.</p>
-        <p><strong>Description :</strong> Conception et réalisation d’un exosquelette motorisé pour le bras, intégrant des capteurs de position.</p>
-        <p><strong>Technologies / Outils :</strong> Arduino, servomoteurs, capteurs de flexion, impression 3D.</p>
-        <p><strong>Résultats :</strong> Prototype fonctionnel capable de soulager jusqu’à 5 kg en statique, présenté lors de la soutenance semestrielle.</p>
-      </article>
+        <h3 style="margin-top: 15px;">Intégration capteurs et servomoteurs</h3>
+        <p><strong>Contexte :</strong> Améliorer la précision du mouvement.</p>
+        <ul>
+          <li>Capteurs MPU-6050 (accéléromètre, gyroscope)</li>
+          <li>Carte Arduino Mega, servomoteurs à couple élevé</li>
+          <li>Algorithme de correction en C/C++ embarqué</li>
+        </ul>
+        <p>Résultat : précision augmentée de 30 %, confort de portage amélioré.</p>
+      </div>
+    </div>
 
-      <article>
-        <h3>Application Android de contrôle via Wi-Fi</h3>
-        <p><strong>Contexte :</strong> Développement d’une application pour piloter à distance le prototype d’exosquelette via Wi-Fi.</p>
-        <p><strong>Description :</strong> Création de l’interface graphique, communication asynchrone avec Arduino, gestion des commandes de mouvements.</p>
-        <p><strong>Technologies / Outils :</strong> Android Studio (Java), Volley, protocoles TCP/IP, Arduino UNO.</p>
-        <p><strong>Résultats :</strong> Contrôle en temps réel du prototype depuis un smartphone, validé lors d’une démonstration en laboratoire.</p>
-      </article>
+    <!-- Compétences (droite) -->
+    <div class="timeline-item right">
+      <div class="title-circle">Compétences</div>
+      <div class="content">
+        <ul>
+          <li><strong>Langages :</strong> Java, C++, C#, JavaScript, PHP, SQL, NoSQL (MongoDB)</li>
+          <li><strong>Outils & Frameworks :</strong> Android Studio, Docker, Postman, Git, VS Code, Cisco</li>
+          <li><strong>Logiciels :</strong> Photoshop, Illustrator, Figma, Pack Office</li>
+          <li><strong>Admin. Système :</strong> Maintenance, dépannage, réseaux, méthodologies Agile (Scrum)</li>
+          <li><strong>Langues :</strong> Français (natal), Anglais (B2)</li>
+        </ul>
+      </div>
+    </div>
 
-      <article>
-        <h3>Intégration capteurs, servos et Arduino</h3>
-        <p><strong>Contexte :</strong> Projet visant à améliorer la précision du mouvement de l’exosquelette.</p>
-        <p><strong>Description :</strong> Implémentation d’un système de capteurs (accéléromètre, gyroscope) pour mesurer l’orientation du bras et ajuster le mouvement des servomoteurs.</p>
-        <p><strong>Technologies / Outils :</strong> Arduino Mega, capteurs MPU-6050, servomoteurs, code en C/C++ embarqué.</p>
-        <p><strong>Résultats :</strong> Précision de mouvement augmentée de 30 %, meilleur confort de portage.</p>
-      </article>
+    <!-- Contact (gauche) -->
+    <div class="timeline-item left">
+      <div class="title-circle">Contact</div>
+      <div class="content">
+        <p><strong>Email :</strong> <a href="mailto:sawera18@outlook.fr">sawera18@outlook.fr</a></p>
+        <p><strong>Téléphone :</strong> 06 02 42 08 33</p>
+        <p><strong>LinkedIn :</strong> <a href="https://www.linkedin.com/in/sawera-akhtar-3451b8201" target="_blank">linkedin.com/in/sawera-akhtar-3451b8201</a></p>
+        <p><strong>Disponibilité :</strong> Télétravail ou présentiel<br>
+           <strong>Permis B &amp; véhicule :</strong> Oui</p>
+        <p><a href="cv/Sawera-Akhtar-CV.pdf" class="btn" target="_blank">Télécharger mon CV (PDF)</a></p>
+      </div>
+    </div>
 
-    </section>
+  </div> <!-- /.timeline-container -->
 
-    <!-- 5. Compétences -->
-    <section id="competences">
-      <h2>Compétences</h2>
-      <ul>
-        <li><strong>Langues :</strong> Français (natal), Anglais (B2)</li>
-        <li><strong>Technologies :</strong> Java, C++, C#, JavaScript, PHP (WordPress), SQL (MySQL), NoSQL (MongoDB)</li>
-        <li><strong>Outils & Frameworks :</strong> Android Studio, Docker, Postman, Agile (Scrum), Visual Studio Code, Cisco</li>
-        <li><strong>Logiciels :</strong> Pack Office, Photoshop / Illustrator, Figma</li>
-        <li><strong>Autres :</strong> Administration système (maintenance, dépannage), gestion de projets, méthodologies Agile</li>
-      </ul>
-    </section>
-
-    <!-- 6. CV -->
-    <section id="cv">
-      <h2>Mon CV</h2>
-      <p>
-        <a href="Sawera-Akhtar-CV.pdf" class="btn" target="_blank">Télécharger mon CV (PDF)</a>
-      </p>
-      <p><em>Vérifiez que le fichier <code>Sawera-Akhtar-CV.pdf</code> existe bien dans votre dépôt.</em></p>
-    </section>
-
-    <!-- 7. Contact -->
-    <section id="contact">
-      <h2>Contact</h2>
-      <p><strong>Email :</strong> <a href="mailto:sawera18@outlook.fr">sawera18@outlook.fr</a></p>
-      <p><strong>Téléphone :</strong> 06 02 42 08 33</p>
-      <p><strong>LinkedIn :</strong> <a href="https://www.linkedin.com/in/sawera-akhtar-3451b8201" target="_blank">linkedin.com/in/sawera-akhtar-3451b8201</a></p>
-      <p><strong>Disponibilité :</strong> Télétravail ou présentiel | Permis B + véhicule personnel</p>
-    </section>
-
-  </div> <!-- /container -->
-
-  <!-- Pied de page -->
   <footer>
     <p>© 2025 Sawera Akhtar</p>
   </footer>
-
 </body>
 </html>
