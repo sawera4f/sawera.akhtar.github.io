@@ -24,11 +24,11 @@
   <style>
     :root {
       /* Couleurs principales */
-      --clr-primary: #85144b;      /* Magenta foncé demandé */
+      --clr-primary: #85144b;      /* Magenta foncé */
       --clr-secondary: #001f3f;    /* Navy bleu */
       --clr-light: #ffffff;        /* Blanc */
-      --clr-muted: #dddddd;        /* Gris très clair pour textes secondaires */
-      --clr-bg: #f5f7fa;           /* Couleur de fond générale (clair) */
+      --clr-muted: #dddddd;        /* Gris très clair */
+      --clr-bg: #f5f7fa;           /* Fond général */
       --clr-card-shadow: rgba(0, 0, 0, 0.1);
     }
 
@@ -117,7 +117,7 @@
     }
 
     main {
-      padding-top: 90px; /* Pour laisser la place au header fixe */
+      padding-top: 90px; /* Laisser la place au header fixe */
     }
 
     /* ========================
@@ -144,26 +144,6 @@
       display: inline-block;
       position: relative;
     }
-    /* Cadre tournant autour du nom */
-    .hero h1 .rotating-border {
-      position: relative;
-      display: inline-block;
-      padding: 10px 20px;
-      z-index: 1;
-      color: var(--clr-light);
-    }
-    .hero h1 .rotating-border {
-  position: relative;
-  display: inline-block;
-  padding: 5px 10px; /* adapte si tu veux plus ou moins d’espace autour du texte */
-}
-
-
-/* si tu préfères inverser le sens (anti-horaire), remplace “360deg” par “-360deg” */
-@keyframes rotate-rect {
-  0%   { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
     .hero p {
       font-size: 1.1rem;
       margin-top: 15px;
@@ -237,6 +217,31 @@
     }
 
     /* ========================
+       ROTATING BORDER (TITRES)
+       ======================== */
+    .rotating-border {
+      position: relative;
+      display: inline-block;
+      padding: 5px 10px;
+    }
+    .rotating-border::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 2px solid var(--clr-primary);
+      transform-origin: center center;
+      animation: rotate-rect 2s linear infinite;
+      z-index: -1;
+    }
+    @keyframes rotate-rect {
+      0%   { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* ========================
        SECTIONS GÉNÉRIQUES
        ======================== */
     section {
@@ -253,28 +258,15 @@
       font-family: 'Poppins', sans-serif;
       display: inline-block;
     }
-    /* Cadre tournant autour de chaque titre de section */
+    /* Cadre tournant autour des titres de section */
     section h2 .rotating-border {
       position: relative;
       display: inline-block;
-      padding: 8px 16px;
+      padding: 5px 10px;
       z-index: 1;
       color: var(--clr-secondary);
     }
-    section h2 .rotating-border {
-  position: relative;
-  display: inline-block;
-  padding: 5px 10px; /* adapte si tu veux plus ou moins d’espace autour du texte */
-}
-
-
-
-/* si tu préfères inverser le sens (anti-horaire), remplace “360deg” par “-360deg” */
-@keyframes rotate-rect {
-  0%   { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-    /* Petite barre sous le titre (statique, juste pour décorer) */
+    /* Petite barre sous le titre (statique) */
     section h2::after {
       content: '';
       display: block;
@@ -291,7 +283,7 @@
     }
 
     /* ========================
-       À PROPOS (AJUSTÉ)
+       À PROPOS
        ======================== */
     #a-propos {
       background-color: var(--clr-light);
@@ -333,7 +325,6 @@
       font-weight: 300;
       line-height: 1.6;
     }
-    /* Puces personnalisées pour liste */
     #a-propos .apropos-text ul {
       list-style: none;
       margin-left: 0;
@@ -348,7 +339,7 @@
       font-weight: 400;
     }
     #a-propos .apropos-text ul li::before {
-      content: '\f121'; /* Icône fontawesome “code” */
+      content: '\f121';
       font-family: 'Font Awesome 5 Free';
       font-weight: 900;
       position: absolute;
@@ -357,7 +348,6 @@
       color: var(--clr-primary);
       font-size: 1.1rem;
     }
-    /* Exemple de petite image d’illustration à droite (ordinateur ou code) */
     #a-propos .apropos-illu {
       flex: 0 0 300px;
       min-width: 200px;
@@ -916,8 +906,8 @@
             <p>Âgée de 22 ans, je suis étudiante en dernière année de Licence Informatique. Sur ce site, vous découvrirez mes compétences, mes projets et mon parcours.</p>
             <ul>
               <li>🔒 Passionné par le <strong>data</strong> et la protection des données</li>
-              <li>💻 Développement <strong>web</strong> et automatisation </li>
-              <li>📊 Analyse et visualisation de <strong>données</strong> </li>
+              <li>💻 Développement <strong>web</strong> et automatisation</li>
+              <li>📊 Analyse et visualisation de <strong>données</strong></li>
             </ul>
             <p>Les mises à jour seront régulières au fur et à mesure de mes nouveaux apprentissages et expériences.</p>
           </div>
@@ -929,365 +919,368 @@
       </div>
     </section>
 
-   <section id="competences">
-  <div class="section-content">
-    <h2>
-      <span class="rotating-border"><i class="fas fa-cogs"></i>&nbsp;MES COMPÉTENCES</span>
-    </h2>
-
     <!-- ========================
-         IDE & OUTILS
+         SECTION COMPÉTENCES
          ======================== -->
-    <h3 style="font-size:1.6rem; color:var(--clr-secondary); text-align:center; margin-bottom:8px;" data-anim-delay="0.4s">
-      IDE &amp; Outils
-    </h3>
-    <p style="font-size:1rem; color:var(--clr-muted); text-align:center; margin-bottom:20px;" data-anim-delay="0.5s">
-      En tant qu’étudiante, j’utilise quotidiennement :
-    </p>
-    <div class="skills-grid">
-      <!-- Visual Studio Code -->
-      <div class="skill-card" data-anim-delay="0.6s">
-        <h3><i class="fas fa-code"></i>&nbsp;Visual Studio Code</h3>
-        <div class="bar-label">90 %</div>
-        <div class="bar-container">
-          <div class="bar-fill" style="--pct:90%; background-color:var(--clr-primary);"></div>
-        </div>
-      </div>
-      <!-- FileZilla -->
-      <div class="skill-card" data-anim-delay="0.8s">
-        <h3><i class="fas fa-file-upload"></i>&nbsp;FileZilla</h3>
-        <div class="bar-label">80 %</div>
-        <div class="bar-container">
-          <div class="bar-fill" style="--pct:80%; background-color:var(--clr-primary);"></div>
-        </div>
-      </div>
-      <!-- Git / GitHub / GitLab -->
-      <div class="skill-card" data-anim-delay="1s">
-        <h3><i class="fab fa-git-alt"></i>&nbsp;Git / GitHub / GitLab</h3>
-        <div class="bar-label">85 %</div>
-        <div class="bar-container">
-          <div class="bar-fill" style="--pct:85%; background-color:var(--clr-primary);"></div>
-        </div>
-      </div>
-      <!-- Trello -->
-      <div class="skill-card" data-anim-delay="1.2s">
-        <h3><i class="fab fa-trello"></i>&nbsp;Trello</h3>
-        <div class="bar-label">75 %</div>
-        <div class="bar-container">
-          <div class="bar-fill" style="--pct:75%; background-color:var(--clr-primary);"></div>
-        </div>
-      </div>
-      <!-- Microsoft Excel -->
-      <div class="skill-card" data-anim-delay="1.4s">
-        <h3><i class="fas fa-file-excel"></i>&nbsp;Microsoft Excel</h3>
-        <div class="bar-label">90 %</div>
-        <div class="bar-container">
-          <div class="bar-fill" style="--pct:90%; background-color:var(--clr-primary);"></div>
-        </div>
-      </div>
-      <!-- Microsoft Word -->
-      <div class="skill-card" data-anim-delay="1.6s">
-        <h3><i class="fas fa-file-word"></i>&nbsp;Microsoft Word</h3>
-        <div class="bar-label">85 %</div>
-        <div class="bar-container">
-          <div class="bar-fill" style="--pct:85%; background-color:var(--clr-primary);"></div>
-        </div>
-      </div>
-      <!-- Microsoft PowerPoint -->
-      <div class="skill-card" data-anim-delay="1.8s">
-        <h3><i class="fas fa-file-powerpoint"></i>&nbsp;Microsoft PowerPoint</h3>
-        <div class="bar-label">80 %</div>
-        <div class="bar-container">
-          <div class="bar-fill" style="--pct:80%; background-color:var(--clr-primary);"></div>
-        </div>
-      </div>
-      <!-- Power BI -->
-      <div class="skill-card" data-anim-delay="2s">
-        <h3><i class="fas fa-chart-line"></i>&nbsp;Power BI</h3>
-        <div class="bar-label">75 %</div>
-        <div class="bar-container">
-          <div class="bar-fill" style="--pct:75%; background-color:var(--clr-primary);"></div>
-        </div>
-      </div>
-    </div>
+    <section id="competences">
+      <div class="section-content">
+        <h2>
+          <span class="rotating-border"><i class="fas fa-cogs"></i>&nbsp;MES COMPÉTENCES</span>
+        </h2>
 
-    <!-- ========================
-         LANGAGES DE PROGRAMMATION
-         ======================== -->
-    <h3 style="font-size:1.6rem; color:var(--clr-secondary); text-align:center; margin-top:40px; margin-bottom:8px;" data-anim-delay="2.2s">
-      Langages de programmation
-    </h3>
-    <p style="font-size:1rem; color:var(--clr-muted); text-align:center; margin-bottom:20px;" data-anim-delay="2.4s">
-      Je maîtrise plusieurs langages tels que :
-    </p>
-    <div class="skills-grid">
-      <!-- C -->
-      <div class="skill-card" data-anim-delay="2.6s">
-        <h3><i class="fas fa-code"></i>&nbsp;C</h3>
-        <div class="bar-label">70 %</div>
-        <div class="bar-container">
-          <div class="bar-fill" style="--pct:70%; background-color:var(--clr-primary);"></div>
+        <!-- ========================
+             IDE & OUTILS
+             ======================== -->
+        <h3 style="font-size:1.6rem; color:var(--clr-secondary); text-align:center; margin-bottom:8px;" data-anim-delay="0.4s">
+          IDE &amp; Outils
+        </h3>
+        <p style="font-size:1rem; color:var(--clr-muted); text-align:center; margin-bottom:20px;" data-anim-delay="0.5s">
+          En tant qu’étudiante, j’utilise quotidiennement :
+        </p>
+        <div class="skills-grid">
+          <!-- Visual Studio Code -->
+          <div class="skill-card" data-anim-delay="0.6s">
+            <h3><i class="fas fa-code"></i>&nbsp;Visual Studio Code</h3>
+            <div class="bar-label">90 %</div>
+            <div class="bar-container">
+              <div class="bar-fill" style="--pct:90%; background-color:var(--clr-primary);"></div>
+            </div>
+          </div>
+          <!-- FileZilla -->
+          <div class="skill-card" data-anim-delay="0.8s">
+            <h3><i class="fas fa-file-upload"></i>&nbsp;FileZilla</h3>
+            <div class="bar-label">80 %</div>
+            <div class="bar-container">
+              <div class="bar-fill" style="--pct:80%; background-color:var(--clr-primary);"></div>
+            </div>
+          </div>
+          <!-- Git / GitHub / GitLab -->
+          <div class="skill-card" data-anim-delay="1s">
+            <h3><i class="fab fa-git-alt"></i>&nbsp;Git / GitHub / GitLab</h3>
+            <div class="bar-label">85 %</div>
+            <div class="bar-container">
+              <div class="bar-fill" style="--pct:85%; background-color:var(--clr-primary);"></div>
+            </div>
+          </div>
+          <!-- Trello -->
+          <div class="skill-card" data-anim-delay="1.2s">
+            <h3><i class="fab fa-trello"></i>&nbsp;Trello</h3>
+            <div class="bar-label">75 %</div>
+            <div class="bar-container">
+              <div class="bar-fill" style="--pct:75%; background-color:var(--clr-primary);"></div>
+            </div>
+          </div>
+          <!-- Microsoft Excel -->
+          <div class="skill-card" data-anim-delay="1.4s">
+            <h3><i class="fas fa-file-excel"></i>&nbsp;Microsoft Excel</h3>
+            <div class="bar-label">90 %</div>
+            <div class="bar-container">
+              <div class="bar-fill" style="--pct:90%; background-color:var(--clr-primary);"></div>
+            </div>
+          </div>
+          <!-- Microsoft Word -->
+          <div class="skill-card" data-anim-delay="1.6s">
+            <h3><i class="fas fa-file-word"></i>&nbsp;Microsoft Word</h3>
+            <div class="bar-label">85 %</div>
+            <div class="bar-container">
+              <div class="bar-fill" style="--pct:85%; background-color:var(--clr-primary);"></div>
+            </div>
+          </div>
+          <!-- Microsoft PowerPoint -->
+          <div class="skill-card" data-anim-delay="1.8s">
+            <h3><i class="fas fa-file-powerpoint"></i>&nbsp;Microsoft PowerPoint</h3>
+            <div class="bar-label">80 %</div>
+            <div class="bar-container">
+              <div class="bar-fill" style="--pct:80%; background-color:var(--clr-primary);"></div>
+            </div>
+          </div>
+          <!-- Power BI -->
+          <div class="skill-card" data-anim-delay="2s">
+            <h3><i class="fas fa-chart-line"></i>&nbsp;Power BI</h3>
+            <div class="bar-label">75 %</div>
+            <div class="bar-container">
+              <div class="bar-fill" style="--pct:75%; background-color:var(--clr-primary);"></div>
+            </div>
+          </div>
         </div>
-      </div>
-      <!-- C++ -->
-      <div class="skill-card" data-anim-delay="2.8s">
-        <h3><i class="fas fa-plus"></i>&nbsp;C++</h3>
-        <div class="bar-label">65 %</div>
-        <div class="bar-container">
-          <div class="bar-fill" style="--pct:65%; background-color:var(--clr-primary);"></div>
-        </div>
-      </div>
-      <!-- C# -->
-      <div class="skill-card" data-anim-delay="3s">
-        <h3><i class="fas fa-hashtag"></i>&nbsp;C#</h3>
-        <div class="bar-label">70 %</div>
-        <div class="bar-container">
-          <div class="bar-fill" style="--pct:70%; background-color:var(--clr-primary);"></div>
-        </div>
-      </div>
-      <!-- Java -->
-      <div class="skill-card" data-anim-delay="3.2s">
-        <h3><i class="fab fa-java"></i>&nbsp;Java</h3>
-        <div class="bar-label">75 %</div>
-        <div class="bar-container">
-          <div class="bar-fill" style="--pct:75%; background-color:var(--clr-primary);"></div>
-        </div>
-      </div>
-      <!-- JavaScript -->
-      <div class="skill-card" data-anim-delay="3.4s">
-        <h3><i class="fab fa-js"></i>&nbsp;JavaScript</h3>
-        <div class="bar-label">80 %</div>
-        <div class="bar-container">
-          <div class="bar-fill" style="--pct:80%; background-color:var(--clr-primary);"></div>
-        </div>
-      </div>
-      <!-- Python -->
-      <div class="skill-card" data-anim-delay="3.6s">
-        <h3><i class="fab fa-python"></i>&nbsp;Python</h3>
-        <div class="bar-label">85 %</div>
-        <div class="bar-container">
-          <div class="bar-fill" style="--pct:85%; background-color:var(--clr-primary);"></div>
-        </div>
-      </div>
-      <!-- PHP -->
-      <div class="skill-card" data-anim-delay="3.8s">
-        <h3><i class="fab fa-php"></i>&nbsp;PHP</h3>
-        <div class="bar-label">60 %</div>
-        <div class="bar-container">
-          <div class="bar-fill" style="--pct:60%; background-color:var(--clr-primary);"></div>
-        </div>
-      </div>
-      <!-- TypeScript -->
-      <div class="skill-card" data-anim-delay="4s">
-        <h3><i class="fas fa-code"></i>&nbsp;TypeScript</h3>
-        <div class="bar-label">65 %</div>
-        <div class="bar-container">
-          <div class="bar-fill" style="--pct:65%; background-color:var(--clr-primary);"></div>
-        </div>
-      </div>
-      <!-- Bash / Shell -->
-      <div class="skill-card" data-anim-delay="4.2s">
-        <h3><i class="fas fa-terminal"></i>&nbsp;Bash / Shell</h3>
-        <div class="bar-label">70 %</div>
-        <div class="bar-container">
-          <div class="bar-fill" style="--pct:70%; background-color:var(--clr-primary);"></div>
-        </div>
-      </div>
-    </div>
 
-    <!-- ========================
-         DÉVELOPPEMENT WEB & CMS
-         ======================== -->
-    <h3 style="font-size:1.6rem; color:var(--clr-secondary); text-align:center; margin-top:40px; margin-bottom:8px;" data-anim-delay="4.4s">
-      Développement Web &amp; CMS
-    </h3>
-    <p style="font-size:1rem; color:var(--clr-muted); text-align:center; margin-bottom:20px;" data-anim-delay="4.6s">
-      J’ai travaillé avec des technologies et plateformes telles que :
-    </p>
-    <div class="skills-grid">
-      <!-- WordPress -->
-      <div class="skill-card" data-anim-delay="4.8s">
-        <h3><i class="fab fa-wordpress"></i>&nbsp;WordPress</h3>
-        <div class="bar-label">80 %</div>
-        <div class="bar-container">
-          <div class="bar-fill" style="--pct:80%; background-color:var(--clr-primary);"></div>
+        <!-- ========================
+             LANGAGES DE PROGRAMMATION
+             ======================== -->
+        <h3 style="font-size:1.6rem; color:var(--clr-secondary); text-align:center; margin-top:40px; margin-bottom:8px;" data-anim-delay="2.2s">
+          Langages de programmation
+        </h3>
+        <p style="font-size:1rem; color:var(--clr-muted); text-align:center; margin-bottom:20px;" data-anim-delay="2.4s">
+          Je maîtrise plusieurs langages tels que :
+        </p>
+        <div class="skills-grid">
+          <!-- C -->
+          <div class="skill-card" data-anim-delay="2.6s">
+            <h3><i class="fas fa-code"></i>&nbsp;C</h3>
+            <div class="bar-label">70 %</div>
+            <div class="bar-container">
+              <div class="bar-fill" style="--pct:70%; background-color:var(--clr-primary);"></div>
+            </div>
+          </div>
+          <!-- C++ -->
+          <div class="skill-card" data-anim-delay="2.8s">
+            <h3><i class="fas fa-plus"></i>&nbsp;C++</h3>
+            <div class="bar-label">65 %</div>
+            <div class="bar-container">
+              <div class="bar-fill" style="--pct:65%; background-color:var(--clr-primary);"></div>
+            </div>
+          </div>
+          <!-- C# -->
+          <div class="skill-card" data-anim-delay="3s">
+            <h3><i class="fas fa-hashtag"></i>&nbsp;C#</h3>
+            <div class="bar-label">70 %</div>
+            <div class="bar-container">
+              <div class="bar-fill" style="--pct:70%; background-color:var(--clr-primary);"></div>
+            </div>
+          </div>
+          <!-- Java -->
+          <div class="skill-card" data-anim-delay="3.2s">
+            <h3><i class="fab fa-java"></i>&nbsp;Java</h3>
+            <div class="bar-label">75 %</div>
+            <div class="bar-container">
+              <div class="bar-fill" style="--pct:75%; background-color:var(--clr-primary);"></div>
+            </div>
+          </div>
+          <!-- JavaScript -->
+          <div class="skill-card" data-anim-delay="3.4s">
+            <h3><i class="fab fa-js"></i>&nbsp;JavaScript</h3>
+            <div class="bar-label">80 %</div>
+            <div class="bar-container">
+              <div class="bar-fill" style="--pct:80%; background-color:var(--clr-primary);"></div>
+            </div>
+          </div>
+          <!-- Python -->
+          <div class="skill-card" data-anim-delay="3.6s">
+            <h3><i class="fab fa-python"></i>&nbsp;Python</h3>
+            <div class="bar-label">85 %</div>
+            <div class="bar-container">
+              <div class="bar-fill" style="--pct:85%; background-color:var(--clr-primary);"></div>
+            </div>
+          </div>
+          <!-- PHP -->
+          <div class="skill-card" data-anim-delay="3.8s">
+            <h3><i class="fab fa-php"></i>&nbsp;PHP</h3>
+            <div class="bar-label">60 %</div>
+            <div class="bar-container">
+              <div class="bar-fill" style="--pct:60%; background-color:var(--clr-primary);"></div>
+            </div>
+          </div>
+          <!-- TypeScript -->
+          <div class="skill-card" data-anim-delay="4s">
+            <h3><i class="fas fa-code"></i>&nbsp;TypeScript</h3>
+            <div class="bar-label">65 %</div>
+            <div class="bar-container">
+              <div class="bar-fill" style="--pct:65%; background-color:var(--clr-primary);"></div>
+            </div>
+          </div>
+          <!-- Bash / Shell -->
+          <div class="skill-card" data-anim-delay="4.2s">
+            <h3><i class="fas fa-terminal"></i>&nbsp;Bash / Shell</h3>
+            <div class="bar-label">70 %</div>
+            <div class="bar-container">
+              <div class="bar-fill" style="--pct:70%; background-color:var(--clr-primary);"></div>
+            </div>
+          </div>
         </div>
-      </div>
-      <!-- HTML5 -->
-      <div class="skill-card" data-anim-delay="5s">
-        <h3><i class="fab fa-html5"></i>&nbsp;HTML5</h3>
-        <div class="bar-label">90 %</div>
-        <div class="bar-container">
-          <div class="bar-fill" style="--pct:90%; background-color:var(--clr-primary);"></div>
-        </div>
-      </div>
-      <!-- CSS3 -->
-      <div class="skill-card" data-anim-delay="5.2s">
-        <h3><i class="fab fa-css3"></i>&nbsp;CSS3</h3>
-        <div class="bar-label">85 %</div>
-        <div class="bar-container">
-          <div class="bar-fill" style="--pct:85%; background-color:var(--clr-primary);"></div>
-        </div>
-      </div>
-      <!-- Sass -->
-      <div class="skill-card" data-anim-delay="5.4s">
-        <h3><i class="fab fa-sass"></i>&nbsp;Sass</h3>
-        <div class="bar-label">70 %</div>
-        <div class="bar-container">
-          <div class="bar-fill" style="--pct:70%; background-color:var(--clr-primary);"></div>
-        </div>
-      </div>
-      <!-- React -->
-      <div class="skill-card" data-anim-delay="5.6s">
-        <h3><i class="fab fa-react"></i>&nbsp;React</h3>
-        <div class="bar-label">75 %</div>
-        <div class="bar-container">
-          <div class="bar-fill" style="--pct:75%; background-color:var(--clr-primary);"></div>
-        </div>
-      </div>
-      <!-- Angular -->
-      <div class="skill-card" data-anim-delay="5.8s">
-        <h3><i class="fab fa-angular"></i>&nbsp;Angular</h3>
-        <div class="bar-label">65 %</div>
-        <div class="bar-container">
-          <div class="bar-fill" style="--pct:65%; background-color:var(--clr-primary);"></div>
-        </div>
-      </div>
-      <!-- Node.js / Express (API) -->
-      <div class="skill-card" data-anim-delay="6s">
-        <h3><i class="fab fa-node"></i>&nbsp;Node.js / Express</h3>
-        <div class="bar-label">70 %</div>
-        <div class="bar-container">
-          <div class="bar-fill" style="--pct:70%; background-color:var(--clr-primary);"></div>
-        </div>
-      </div>
-    </div>
 
-    <!-- ========================
-         DEVOPS, CLOUD & SÉCURITÉ
-         ======================== -->
-    <h3 style="font-size:1.6rem; color:var(--clr-secondary); text-align:center; margin-top:40px; margin-bottom:8px;" data-anim-delay="6.2s">
-      DevOps, Cloud &amp; Sécurité
-    </h3>
-    <p style="font-size:1rem; color:var(--clr-muted); text-align:center; margin-bottom:20px;" data-anim-delay="6.4s">
-      J’utilise régulièrement des outils et environnements tels que :
-    </p>
-    <div class="skills-grid">
-      <!-- Docker -->
-      <div class="skill-card" data-anim-delay="6.6s">
-        <h3><i class="fab fa-docker"></i>&nbsp;Docker</h3>
-        <div class="bar-label">70 %</div>
-        <div class="bar-container">
-          <div class="bar-fill" style="--pct:70%; background-color:var(--clr-primary);"></div>
+        <!-- ========================
+             DÉVELOPPEMENT WEB & CMS
+             ======================== -->
+        <h3 style="font-size:1.6rem; color:var(--clr-secondary); text-align:center; margin-top:40px; margin-bottom:8px;" data-anim-delay="4.4s">
+          Développement Web &amp; CMS
+        </h3>
+        <p style="font-size:1rem; color:var(--clr-muted); text-align:center; margin-bottom:20px;" data-anim-delay="4.6s">
+          J’ai travaillé avec des technologies et plateformes telles que :
+        </p>
+        <div class="skills-grid">
+          <!-- WordPress -->
+          <div class="skill-card" data-anim-delay="4.8s">
+            <h3><i class="fab fa-wordpress"></i>&nbsp;WordPress</h3>
+            <div class="bar-label">80 %</div>
+            <div class="bar-container">
+              <div class="bar-fill" style="--pct:80%; background-color:var(--clr-primary);"></div>
+            </div>
+          </div>
+          <!-- HTML5 -->
+          <div class="skill-card" data-anim-delay="5s">
+            <h3><i class="fab fa-html5"></i>&nbsp;HTML5</h3>
+            <div class="bar-label">90 %</div>
+            <div class="bar-container">
+              <div class="bar-fill" style="--pct:90%; background-color:var(--clr-primary);"></div>
+            </div>
+          </div>
+          <!-- CSS3 -->
+          <div class="skill-card" data-anim-delay="5.2s">
+            <h3><i class="fab fa-css3"></i>&nbsp;CSS3</h3>
+            <div class="bar-label">85 %</div>
+            <div class="bar-container">
+              <div class="bar-fill" style="--pct:85%; background-color:var(--clr-primary);"></div>
+            </div>
+          </div>
+          <!-- Sass -->
+          <div class="skill-card" data-anim-delay="5.4s">
+            <h3><i class="fab fa-sass"></i>&nbsp;Sass</h3>
+            <div class="bar-label">70 %</div>
+            <div class="bar-container">
+              <div class="bar-fill" style="--pct:70%; background-color:var(--clr-primary);"></div>
+            </div>
+          </div>
+          <!-- React -->
+          <div class="skill-card" data-anim-delay="5.6s">
+            <h3><i class="fab fa-react"></i>&nbsp;React</h3>
+            <div class="bar-label">75 %</div>
+            <div class="bar-container">
+              <div class="bar-fill" style="--pct:75%; background-color:var(--clr-primary);"></div>
+            </div>
+          </div>
+          <!-- Angular -->
+          <div class="skill-card" data-anim-delay="5.8s">
+            <h3><i class="fab fa-angular"></i>&nbsp;Angular</h3>
+            <div class="bar-label">65 %</div>
+            <div class="bar-container">
+              <div class="bar-fill" style="--pct:65%; background-color:var(--clr-primary);"></div>
+            </div>
+          </div>
+          <!-- Node.js / Express (API) -->
+          <div class="skill-card" data-anim-delay="6s">
+            <h3><i class="fab fa-node"></i>&nbsp;Node.js / Express</h3>
+            <div class="bar-label">70 %</div>
+            <div class="bar-container">
+              <div class="bar-fill" style="--pct:70%; background-color:var(--clr-primary);"></div>
+            </div>
+          </div>
         </div>
-      </div>
-      <!-- Linux -->
-      <div class="skill-card" data-anim-delay="6.8s">
-        <h3><i class="fab fa-linux"></i>&nbsp;Linux</h3>
-        <div class="bar-label">75 %</div>
-        <div class="bar-container">
-          <div class="bar-fill" style="--pct:75%; background-color:var(--clr-primary);"></div>
-        </div>
-      </div>
-      <!-- Postman -->
-      <div class="skill-card" data-anim-delay="7s">
-        <h3><i class="fas fa-paper-plane"></i>&nbsp;Postman</h3>
-        <div class="bar-label">65 %</div>
-        <div class="bar-container">
-          <div class="bar-fill" style="--pct:65%; background-color:var(--clr-primary);"></div>
-        </div>
-      </div>
-      <!-- Cisco -->
-      <div class="skill-card" data-anim-delay="7.2s">
-        <h3><i class="fas fa-network-wired"></i>&nbsp;Cisco</h3>
-        <div class="bar-label">60 %</div>
-        <div class="bar-container">
-          <div class="bar-fill" style="--pct:60%; background-color:var(--clr-primary);"></div>
-        </div>
-      </div>
-    </div>
 
-    <!-- ========================
-         BASES DE DONNÉES
-         ======================== -->
-    <h3 style="font-size:1.6rem; color:var(--clr-secondary); text-align:center; margin-top:40px; margin-bottom:8px;" data-anim-delay="7.4s">
-      Bases de données
-    </h3>
-    <p style="font-size:1rem; color:var(--clr-muted); text-align:center; margin-bottom:20px;" data-anim-delay="7.6s">
-      J’ai travaillé avec différents systèmes de gestion :
-    </p>
-    <div class="skills-grid">
-      <!-- MySQL -->
-      <div class="skill-card" data-anim-delay="7.8s">
-        <h3><i class="fas fa-database"></i>&nbsp;MySQL</h3>
-        <div class="bar-label">80 %</div>
-        <div class="bar-container">
-          <div class="bar-fill" style="--pct:80%; background-color:var(--clr-primary);"></div>
+        <!-- ========================
+             DEVOPS, CLOUD & SÉCURITÉ
+             ======================== -->
+        <h3 style="font-size:1.6rem; color:var(--clr-secondary); text-align:center; margin-top:40px; margin-bottom:8px;" data-anim-delay="6.2s">
+          DevOps, Cloud &amp; Sécurité
+        </h3>
+        <p style="font-size:1rem; color:var(--clr-muted); text-align:center; margin-bottom:20px;" data-anim-delay="6.4s">
+          J’utilise régulièrement des outils et environnements tels que :
+        </p>
+        <div class="skills-grid">
+          <!-- Docker -->
+          <div class="skill-card" data-anim-delay="6.6s">
+            <h3><i class="fab fa-docker"></i>&nbsp;Docker</h3>
+            <div class="bar-label">70 %</div>
+            <div class="bar-container">
+              <div class="bar-fill" style="--pct:70%; background-color:var(--clr-primary);"></div>
+            </div>
+          </div>
+          <!-- Linux -->
+          <div class="skill-card" data-anim-delay="6.8s">
+            <h3><i class="fab fa-linux"></i>&nbsp;Linux</h3>
+            <div class="bar-label">75 %</div>
+            <div class="bar-container">
+              <div class="bar-fill" style="--pct:75%; background-color:var(--clr-primary);"></div>
+            </div>
+          </div>
+          <!-- Postman -->
+          <div class="skill-card" data-anim-delay="7s">
+            <h3><i class="fas fa-paper-plane"></i>&nbsp;Postman</h3>
+            <div class="bar-label">65 %</div>
+            <div class="bar-container">
+              <div class="bar-fill" style="--pct:65%; background-color:var(--clr-primary);"></div>
+            </div>
+          </div>
+          <!-- Cisco -->
+          <div class="skill-card" data-anim-delay="7.2s">
+            <h3><i class="fas fa-network-wired"></i>&nbsp;Cisco</h3>
+            <div class="bar-label">60 %</div>
+            <div class="bar-container">
+              <div class="bar-fill" style="--pct:60%; background-color:var(--clr-primary);"></div>
+            </div>
+          </div>
         </div>
-      </div>
-      <!-- NoSQL -->
-      <div class="skill-card" data-anim-delay="8s">
-        <h3><i class="fas fa-database"></i>&nbsp;NoSQL</h3>
-        <div class="bar-label">65 %</div>
-        <div class="bar-container">
-          <div class="bar-fill" style="--pct:65%; background-color:var(--clr-primary);"></div>
-        </div>
-      </div>
-      <!-- MongoDB -->
-      <div class="skill-card" data-anim-delay="8.2s">
-        <h3><i class="fas fa-leaf"></i>&nbsp;MongoDB</h3>
-        <div class="bar-label">70 %</div>
-        <div class="bar-container">
-          <div class="bar-fill" style="--pct:70%; background-color:var(--clr-primary);"></div>
-        </div>
-      </div>
-      <!-- PostgreSQL -->
-      <div class="skill-card" data-anim-delay="8.4s">
-        <h3><i class="fas fa-database"></i>&nbsp;PostgreSQL</h3>
-        <div class="bar-label">75 %</div>
-        <div class="bar-container">
-          <div class="bar-fill" style="--pct:75%; background-color:var(--clr-primary);"></div>
-        </div>
-      </div>
-    </div>
 
-    <!-- ========================
-         DÉVELOPPEMENT MOBILE
-         ======================== -->
-    <h3 style="font-size:1.6rem; color:var(--clr-secondary); text-align:center; margin-top:40px; margin-bottom:8px;" data-anim-delay="8.6s">
-      Développement Mobile
-    </h3>
-    <p style="font-size:1rem; color:var(--clr-muted); text-align:center; margin-bottom:20px;" data-anim-delay="8.8s">
-      Mes expériences en mobile incluent :
-    </p>
-    <div class="skills-grid">
-      <!-- Android SDK -->
-      <div class="skill-card" data-anim-delay="9s">
-        <h3><i class="fab fa-android"></i>&nbsp;Android SDK</h3>
-        <div class="bar-label">70 %</div>
-        <div class="bar-container">
-          <div class="bar-fill" style="--pct:70%; background-color:var(--clr-primary);"></div>
+        <!-- ========================
+             BASES DE DONNÉES
+             ======================== -->
+        <h3 style="font-size:1.6rem; color:var(--clr-secondary); text-align:center; margin-top:40px; margin-bottom:8px;" data-anim-delay="7.4s">
+          Bases de données
+        </h3>
+        <p style="font-size:1rem; color:var(--clr-muted); text-align:center; margin-bottom:20px;" data-anim-delay="7.6s">
+          J’ai travaillé avec différents systèmes de gestion :
+        </p>
+        <div class="skills-grid">
+          <!-- MySQL -->
+          <div class="skill-card" data-anim-delay="7.8s">
+            <h3><i class="fas fa-database"></i>&nbsp;MySQL</h3>
+            <div class="bar-label">80 %</div>
+            <div class="bar-container">
+              <div class="bar-fill" style="--pct:80%; background-color:var(--clr-primary);"></div>
+            </div>
+          </div>
+          <!-- NoSQL -->
+          <div class="skill-card" data-anim-delay="8s">
+            <h3><i class="fas fa-database"></i>&nbsp;NoSQL</h3>
+            <div class="bar-label">65 %</div>
+            <div class="bar-container">
+              <div class="bar-fill" style="--pct:65%; background-color:var(--clr-primary);"></div>
+            </div>
+          </div>
+          <!-- MongoDB -->
+          <div class="skill-card" data-anim-delay="8.2s">
+            <h3><i class="fas fa-leaf"></i>&nbsp;MongoDB</h3>
+            <div class="bar-label">70 %</div>
+            <div class="bar-container">
+              <div class="bar-fill" style="--pct:70%; background-color:var(--clr-primary);"></div>
+            </div>
+          </div>
+          <!-- PostgreSQL -->
+          <div class="skill-card" data-anim-delay="8.4s">
+            <h3><i class="fas fa-database"></i>&nbsp;PostgreSQL</h3>
+            <div class="bar-label">75 %</div>
+            <div class="bar-container">
+              <div class="bar-fill" style="--pct:75%; background-color:var(--clr-primary);"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ========================
+             DÉVELOPPEMENT MOBILE
+             ======================== -->
+        <h3 style="font-size:1.6rem; color:var(--clr-secondary); text-align:center; margin-top:40px; margin-bottom:8px;" data-anim-delay="8.6s">
+          Développement Mobile
+        </h3>
+        <p style="font-size:1rem; color:var(--clr-muted); text-align:center; margin-bottom:20px;" data-anim-delay="8.8s">
+          Mes expériences en mobile incluent :
+        </p>
+        <div class="skills-grid">
+          <!-- Android SDK -->
+          <div class="skill-card" data-anim-delay="9s">
+            <h3><i class="fab fa-android"></i>&nbsp;Android SDK</h3>
+            <div class="bar-label">70 %</div>
+            <div class="bar-container">
+              <div class="bar-fill" style="--pct:70%; background-color:var(--clr-primary);"></div>
+            </div>
+          </div>
+          <!-- Kotlin -->
+          <div class="skill-card" data-anim-delay="9.2s">
+            <h3><i class="fas fa-code"></i>&nbsp;Kotlin</h3>
+            <div class="bar-label">60 %</div>
+            <div class="bar-container">
+              <div class="bar-fill" style="--pct:60%; background-color:var(--clr-primary);"></div>
+            </div>
+          </div>
+          <!-- React Native -->
+          <div class="skill-card" data-anim-delay="9.4s">
+            <h3><i class="fab fa-react"></i>&nbsp;React Native</h3>
+            <div class="bar-label">65 %</div>
+            <div class="bar-container">
+              <div class="bar-fill" style="--pct:65%; background-color:var(--clr-primary);"></div>
+            </div>
+          </div>
         </div>
       </div>
-      <!-- Kotlin -->
-      <div class="skill-card" data-anim-delay="9.2s">
-        <h3><i class="fas fa-code"></i>&nbsp;Kotlin</h3>
-        <div class="bar-label">60 %</div>
-        <div class="bar-container">
-          <div class="bar-fill" style="--pct:60%; background-color:var(--clr-primary);"></div>
-        </div>
-      </div>
-      <!-- React Native -->
-      <div class="skill-card" data-anim-delay="9.4s">
-        <h3><i class="fab fa-react"></i>&nbsp;React Native</h3>
-        <div class="bar-label">65 %</div>
-        <div class="bar-container">
-          <div class="bar-fill" style="--pct:65%; background-color:var(--clr-primary);"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
     <!-- ========================
          SECTION FORMATION
@@ -1432,7 +1425,7 @@
           </div>
           <div class="contact-card" data-anim-delay="0.4s">
             <h3><i class="fab fa-linkedin"></i>&nbsp;LinkedIn</h3>
-            <p><a href="https://www.linkedin.com/in/sawera-akhtar" target="_blank">linkedin.com/in/sawera-akhtarrr</a></p>
+            <p><a href="https://www.linkedin.com/in/sawera-akhtar" target="_blank">linkedin.com/in/sawera-akhtar</a></p>
           </div>
         </div>
       </div>
